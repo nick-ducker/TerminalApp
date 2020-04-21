@@ -11,3 +11,4 @@
 * *0830 :* Re-wrote and re-structured Statement of Purpose and Scope V2
 * *1200 :* Finished List of Features for SDP V1
 * *1300 :* Finished User Interaction and Experience for SDP V1
+* *1500 :* Finished Flowchart for SDP V1
