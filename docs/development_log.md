@@ -13,3 +13,4 @@
 * *1300 :* Finished User Interaction and Experience for SDP V1
 * *1500 :* Finished Flowchart for SDP V1
 * *1600 :* Created User stories in Trello V1
+* *1700 :* Part way through Implementation Plan
