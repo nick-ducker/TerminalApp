@@ -6,3 +6,7 @@
 * *1550 :* Created GitHub Repo and cloned to PC
 * *1600 :* Created file structure for project
 * *1700 :* First version of Purpose and Scope statement
+
+### 21/4/20
+* *0830 :* Re-wrote and re-structured Statement of Purpose and Scope
+* *1200 :* Finished List of Features for SDP
