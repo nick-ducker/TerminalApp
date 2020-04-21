@@ -171,6 +171,7 @@ I then started moving toward the concept of a more text based interaction with a
 * A few seconds later, the user will be given a Y/N prompt and asked whether they want to play again.
 * If the user answers yes, the game restarts from the title page.
 * If the user answers no, the game will exit with an exit message.
+* If at any point the game throws an error, the program will stop gracefully and display easy to understand information about what happened.
 
 ---
 
