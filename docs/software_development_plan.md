@@ -134,6 +134,47 @@ I then started moving toward the concept of a more text based interaction with a
 
     For all three of these outcomes, the scoring method checks whether the calculated score is below zero. If so, it displays 0 instead of a negative number.
 
+---
+
+## User Interaction and Experience
+
+### Github
+* The user must first clone the repository from GitHub. The README file in the root directory contains the following information to ensure the user can install and run the program:
+
+
+  *  Links to install Ruby
+  *  Step by step instructions on installing and using bundler to ensure the correct gems are installed for the programs dependencies. 
+  *  Step by step instructions for running the basic program
+  *  A list of command line arguments you are able to give the program.
+
+* Once the user has the appropriate gems installed, the user can run the program a variety of different ways from the commmand line. 
+  * `ruby init.rb --help` will display a help document and end the program. This help document simply outlines the basic commands and gem dependencies. It also outlines some of the error handling within the program if users are struggling to run the program.
+  * `ruby init.rb -nc` will run the program in black and white.
+  * `ruby init.rb -d1 -d2 -d3 -d4` will run the program, skipping the title, rules and difficulty selection, using the provided argument to set the difficulty. 
+  * `ruby init.rb` will simply run the program.
+
+* When run normally, the program will begin the game and show the title screen, prompting the user for any key or q to quit. If the user presses any key other than q, the game progresses. If the user presses q, the program quits with a gameover screen and thanks for playing.
+* The user will be prompted again if they would like to see the rules with a simple yes no statement. If the user selects no, they skip the rules and are taken to the difficulty setting screen. If the user selects yes, they are taken to the rules page.
+* On the rules page, the user shown the general outline of the game in text and prompted to press any key. Next they will be taken through an interactive live demo of the game itself. Once this has finished, they will be prompted to press any key and taken to the difficulty setting.
+* The user is prompted to select a difficulty setting from easy through to insane. Once they have made a selection the game starts.
+* The user is shown an ascii art countdown from three to one
+* From now until the game over screen, the current score and level of difficulty is displayed at the top of the screen
+* The user is then shown a random phrase. Each of these phrases is first typed onto a random part of the screen, before being flashed randomly around the screen. This is repeated a random amount of times. 
+* The user is then shown a random prompt containing one word surrounded in square brackets in all caps. It is typed and flashed in the same manner as the phrases before stopping and waiting for user input.
+* The user now must input the word that is surrounded in square brackets and is in all caps before they run out of time. 
+* If the user enters the correct word within the time limit, they will be shown a congratulatory message and their new total score
+* If the user does not enter the correct word within the time limit, they will be told that they have entered the word incorrectly and shown their new total score.
+* If the user does not finishing entering the word withing the time limit, they will be told that they ran out of time and shown their new total score.
+* At this stage the game will loop again as long as theirs either another prompt that hasn't been shown, or the players score is 0.
+* If there are no more phrases left in the array, the user will be shown a positive game over screen with their final score.
+* If the total score is 0, the user will be shown a negative game over screen.
+* A few seconds later, the user will be given a Y/N prompt and asked whether they want to play again.
+* If the user answers yes, the game restarts from the title page.
+* If the user answers no, the game will exit with an exit message.
+
+---
+
+
 
 
   
