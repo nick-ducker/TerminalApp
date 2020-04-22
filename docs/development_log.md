@@ -14,3 +14,6 @@
 * *1500 :* Finished Flowchart for SDP V1
 * *1600 :* Created User stories in Trello V1
 * *1700 :* Part way through Implementation Plan
+
+### 22/4/20
+* *1100 :* Finished implementation Plan
