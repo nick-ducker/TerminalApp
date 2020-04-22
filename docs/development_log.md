@@ -17,3 +17,4 @@
 
 ### 22/4/20
 * *1100 :* Finished implementation Plan
+* *1400 :* Tests outline written for TDD and Manual Tests
