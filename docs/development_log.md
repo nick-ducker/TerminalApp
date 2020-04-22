@@ -16,5 +16,5 @@
 * *1700 :* Part way through Implementation Plan
 
 ### 22/4/20
-* *1100 :* Finished implementation Plan
-* *1400 :* Tests outline written for TDD and Manual Tests
+* *1100 :* Finished implementation Plan V1
+* *1400 :* Tests outline written for TDD and Manual Tests V1
