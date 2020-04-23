@@ -42,3 +42,4 @@ The next steps will be to start writing the code to pass the tests. Only once al
 * *1345 :* Passed game class test suite
 * *1500 :* Passed --help screen manual test
 * *1515 :* Passed main_typer manual test
+* *1530 :* Passed second and third typer manual test
