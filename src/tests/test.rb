@@ -102,48 +102,54 @@ class FunctionsTest < Test::Unit::TestCase
 
     def test_colour_readable
 
-        assert_equal(Array, COLOURS.class, "Colour Array of Functions module is not readable outside the module")
+        assert_equal(Array, colours().class, "Colour Array of Functions module is not readable outside the module")
 
     end
 
-    # def test_colour_changer
+    def test_colour_changer
 
-    #     colour_array(:white)
-    #     assert_equal([:white], DataModule.colour, "Colour changer method does not change module variable to passed argument")
+        colour_changer(:white)
+        assert_equal([:white], colours(), "Colour changer method does not change module variable to passed argument")
 
-    #     colour_array(:green)
-    #     assert_equal([:green], DataModule.colour, "Colour changer method does not change module variable to passed argument")
+        colour_changer(:green)
+        assert_equal([:green], colours(), "Colour changer method does not change module variable to passed argument")
 
-    # end
+    end
 
-    # def test_score_display
+    def test_score_display
 
-    #     assert_equal("Current Score: 10000  |  Difficulty: Easy",score(10000,"Easy"), "Score display method does not display correctly")
-    #     assert_equal("Current Score: 999  |  Difficulty: Medium",score(999,"Medium"), "Score display method does not display correctly")
+        assert_equal("Current Score: 10000  |  Difficulty: Easy",score(10000,"Easy"), "Score display method does not display correctly")
+        assert_equal("Current Score: 999  |  Difficulty: Medium",score(999,"Medium"), "Score display method does not display correctly")
 
-    # end
+    end
 
-    # def test_select_method
+    def test_select_method
 
-    #     assert_equal(1, selector([1,2,3,4,5]).size, "Select method does not return a single element")
-    #     assert_equal(1, selector([5,10,34,99,0]).size, "Select method does not return a single element")
+        array = selector([1,2,3,4,5])
+        assert_equal(Integer, array.class, "Select method does not return a single element")
 
-    # end
+        array = selector([5,10,34,99,0])
+        assert_equal(Integer, array.class, "Select method does not return a single element")
 
-    # def test_delete_method
+    end
 
-    #     assert_equal(4, deleter(1,[1,2,3,4,5]).size, "Delete method does not delete the passed argument from the passed array")
-    #     assert_equal(6, deleter(20,[10,20,30,40,50,60,70]).size, "Delete method does not delete the passed argument from the passed array")
+    def test_delete_method
 
-    # end
+        array = deleter(1,[1,2,3,4,5])
+        assert_equal(4, array.size, "Delete method does not delete the passed argument from the passed array")
+        
+        array = deleter(20,[10,20,30,40,50,60,70])
+        assert_equal(6, array.size, "Delete method does not delete the passed argument from the passed array")
 
-    # def test_checking_method
+    end
 
-    #     assert_equal("true",checker("input","checking the [INPUT]"), "Checker method does not return true on matching input")
-    #     assert_equal("false",checker("ipnut","checking the [INPUT]"), "Checker method does not return false on non-matching input")
-    #     assert_equal("no answer",checker("no answer","checking the [INPUT]"), "Checker method does not return no answer on no answer input")
+    def test_checking_method
 
-    # end
+        assert_equal("true",checker("input","checking the [INPUT]"), "Checker method does not return true on matching input")
+        assert_equal("false",checker("ipnut","checking the [INPUT]"), "Checker method does not return false on non-matching input")
+        assert_equal("no answer",checker("no answer","checking the [INPUT]"), "Checker method does not return no answer on no answer input")
+
+    end
 
 end
 
