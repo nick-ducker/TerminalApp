@@ -66,6 +66,7 @@ module FunctionsModule
             print x.colorize(@@colours[0])
             sleep(0.003)
         end
+        puts
     end
 
     #types a passed string character by character at a medium pace in multicolor

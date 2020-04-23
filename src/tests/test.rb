@@ -5,6 +5,7 @@ require_relative '../classes/terminal'
 require_relative '../classes/game'
 require_relative '../modules/data'
 require_relative '../modules/functions'
+require_relative '../modules/ascii'
 
 # class TerminalTest < Test::Unit::TestCase
 
@@ -174,6 +175,7 @@ class ManualTests
    
     include FunctionsModule
     include DifficultyModule
+    include AsciiArt
     def initialize
         #main_typer("I am being typed",[0.5,0.05])
         #second_typer("I am being typed quickly")
@@ -193,11 +195,13 @@ class ManualTests
         # difficulty = difficulty_selector(:d1)
         # flash("I am being flashed",difficulty,TTY::Screen.height, TTY::Screen.width)
 
+        warning()
+
     end
 
 end
 
-#ManualTests.new
+ManualTests.new
 
 # def test_timed_input
 #     game = Game.new
@@ -207,16 +211,16 @@ end
 # end
 # test_timed_input()
 
-def test_scorer
-    game = Game.new
-    game.elapsed = 1.98
-    game.scorer("true")
+# def test_scorer
+#     game = Game.new
+#     game.elapsed = 1.98
+#     game.scorer("true")
 
-    game = Game.new
-    game.scorer("false")
+#     game = Game.new
+#     game.scorer("false")
 
-    game = Game.new
-    game.scorer("no answer")
-end
+#     game = Game.new
+#     game.scorer("no answer")
+# end
 
-test_scorer
+# test_scorer
