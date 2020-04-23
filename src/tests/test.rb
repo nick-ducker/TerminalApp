@@ -1,4 +1,5 @@
 require 'test/unit'
+require 'tty-screen'
 
 require_relative '../classes/terminal'
 require_relative '../classes/game'
@@ -172,6 +173,7 @@ require_relative '../modules/functions'
 class ManualTests
    
     include FunctionsModule
+    include DifficultyModule
     def initialize
         #main_typer("I am being typed",[0.5,0.05])
         #second_typer("I am being typed quickly")
@@ -184,7 +186,12 @@ class ManualTests
 
         #enter_q()
 
-        difficulty_menu()
+        #difficulty_menu()
+
+        #random_cursor(TTY::Screen.height, TTY::Screen.width)
+
+        difficulty = difficulty_selector(:d1)
+        flash("I am being flashed",difficulty,TTY::Screen.height, TTY::Screen.width)
         
     end
 

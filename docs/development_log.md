@@ -47,3 +47,4 @@ The next steps will be to start writing the code to pass the tests. Only once al
 * *1550 :* Passed y/n prompt manual test
 * *1600 :* Passed Enter Q prompt manual test
 * *1615 :* Passed Difficulty selection manual test
+* *1635 :* Passed Flasher manual test

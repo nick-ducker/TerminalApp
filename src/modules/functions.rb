@@ -121,6 +121,18 @@ module FunctionsModule
         end
     end
 
+    def random_cursor(height,width)
+        print TTY::Cursor.down(rand(0..(height - 5))) + TTY::Cursor.forward(rand(0..(width - 10)))
+    end
+
+    def flash(string,difficulty,height,width)
+        difficulty[5].times do
+            system 'clear'
+            random_cursor(height,width)
+            puts string.colorize(selector(@@colours))
+            sleep(difficulty[6])
+        end
+    end
 
 end
 
