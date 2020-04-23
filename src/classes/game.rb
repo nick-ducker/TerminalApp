@@ -1,5 +1,6 @@
 require 'tty-cursor'
 require 'tty-screen'
+require 'timeout'
 
 require_relative '../modules/data'
 
@@ -29,6 +30,20 @@ class Game
     def game_crash(array)
         if array.include?("-crash")
             raise StandardError, "Why did you do this to me, John?"
+        end
+    end
+
+    def timed_input
+        begin
+            timer = Timeout::timeout(@difficulty[1]) {
+                starting = Process.clock_gettime(Process::CLOCK_MONOTONIC)
+                input = gets.strip
+                ending = Process.clock_gettime(Process::CLOCK_MONOTONIC)
+                @elapsed = (ending - starting).round(2)
+                return input
+            }
+        rescue => exception
+            return "no answer"            
         end
     end
 

@@ -190,11 +190,20 @@ class ManualTests
 
         #random_cursor(TTY::Screen.height, TTY::Screen.width)
 
-        difficulty = difficulty_selector(:d1)
-        flash("I am being flashed",difficulty,TTY::Screen.height, TTY::Screen.width)
-        
+        # difficulty = difficulty_selector(:d1)
+        # flash("I am being flashed",difficulty,TTY::Screen.height, TTY::Screen.width)
+
     end
 
 end
 
-ManualTests.new
+#ManualTests.new
+
+def test_timed_input
+    game = Game.new
+    input = game.timed_input
+    puts input
+    puts game.elapsed
+end
+
+test_timed_input()
