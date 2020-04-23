@@ -15,11 +15,9 @@ class Terminal
     #this method should start the "play again" game loop and listen for false 
     #from the main game instance
     def start
-
         while @running
             @running = Game.new(@argv)
         end
-
     end
 
     #This method takes the ARGV input from the command line and either shows the
