@@ -30,6 +30,8 @@ The latest development has been finishing up writing my automated unit tests in 
 
 It's definitely an interesting experience to try and design every aspect of every method in your head, explain it and write a test for it, before you start coding it!
 
+The next steps will be to start writing the code to pass the tests. Only once all of the tests are passing, will I start looking at my implementation plan.
+
 ### 23/4/20
 * *0930 :* Debugged unit tests
 * *0950 :* Wrote first status update
