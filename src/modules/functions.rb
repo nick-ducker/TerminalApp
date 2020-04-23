@@ -1,5 +1,6 @@
 require 'colorize'
 require 'tty-cursor'
+require 'tty-prompt'
 
 module FunctionsModule
 
@@ -82,6 +83,10 @@ module FunctionsModule
             print TTY::Cursor.clear_char(1)
             sleep(0.03)
         end
+    end
+
+    def yes_no(prompt)
+        TTY::Prompt.new.yes?(prompt)
     end
 
 end
