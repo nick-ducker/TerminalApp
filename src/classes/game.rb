@@ -3,13 +3,15 @@ require 'tty-screen'
 require 'timeout'
 
 require_relative '../modules/data'
+require_relative '../modules/functions'
 
 class Game
 
     include DifficultyModule
     include DataModule
+    include FunctionsModule
 
-    attr_reader :skipintro, :difficulty, :phrasearr, :promptarr, :cursor, :width, :height, :elapsed, :score
+    attr_accessor :skipintro, :difficulty, :phrasearr, :promptarr, :cursor, :width, :height, :elapsed, :score
 
     def initialize(argv=[])
 
@@ -44,6 +46,26 @@ class Game
             }
         rescue => exception
             return "no answer"            
+        end
+    end
+
+    def scorer(string)
+        if string == "true"
+            system "clear"
+            type_and_delete "You answered in enough time!"
+            type_and_delete "Answered in #{@elapsed} seconds"
+            @score = (@score - (@elapsed * 100)).to_i
+            type_and_delete "Your score is now #{@score >= 0 ? @score : 0}"
+        elsif string == "false"
+            system "clear"
+            type_and_delete "You typed it wrong!"
+            @score = (@score - @difficulty[2]).to_i
+            type_and_delete "Your score is now #{@score >= 0 ? @score : 0}"
+        else
+            system "clear"
+            type_and_delete "You ran out of time!"
+            @score = (@score - @difficulty[2]).to_i
+            type_and_delete "Your score is now #{@score >= 0 ? @score : 0}"
         end
     end
 

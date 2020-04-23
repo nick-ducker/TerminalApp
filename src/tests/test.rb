@@ -199,11 +199,24 @@ end
 
 #ManualTests.new
 
-def test_timed_input
+# def test_timed_input
+#     game = Game.new
+#     input = game.timed_input
+#     puts input
+#     puts game.elapsed
+# end
+# test_timed_input()
+
+def test_scorer
     game = Game.new
-    input = game.timed_input
-    puts input
-    puts game.elapsed
+    game.elapsed = 1.98
+    game.scorer("true")
+
+    game = Game.new
+    game.scorer("false")
+
+    game = Game.new
+    game.scorer("no answer")
 end
 
-test_timed_input()
+test_scorer

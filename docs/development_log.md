@@ -49,3 +49,4 @@ The next steps will be to start writing the code to pass the tests. Only once al
 * *1615 :* Passed Difficulty selection manual test
 * *1635 :* Passed Flasher manual test
 * *1700 :* Passed Timed input manual test
+* *1715 :* Passed Scoring method manual test
