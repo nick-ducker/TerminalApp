@@ -85,6 +85,20 @@ module FunctionsModule
         end
     end
 
+    #combines third type and delete method
+    def type_and_delete(string)
+        string.chars.each do |x|
+            print x.colorize(selector(@@colours))
+            sleep(0.02)
+        end
+        sleep(2)
+        string.chars.each do |x|
+            print TTY::Cursor.backward(1)
+            print TTY::Cursor.clear_char(1)
+            sleep(0.03)
+        end
+    end
+
     def yes_no(prompt)
         third_typer(prompt)
         puts
@@ -133,6 +147,8 @@ module FunctionsModule
             sleep(difficulty[6])
         end
     end
+
+
 
 end
 
