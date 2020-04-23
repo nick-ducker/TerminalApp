@@ -1,4 +1,5 @@
 require 'colorize'
+require 'tty-cursor'
 
 module FunctionsModule
 
@@ -55,6 +56,31 @@ module FunctionsModule
         string.chars.each do |x|
             print x.colorize(selector(@@colours))
             sleep(selector(sleeparray))
+        end
+    end
+
+    #types a passed string character by character fast in green
+    def second_typer(string)
+        string.chars.each do |x|
+            print x.colorize(@@colours[0])
+            sleep(0.003)
+        end
+    end
+
+    #types a passed string character by character at a medium pace in green
+    def third_typer(string)
+        string.chars.each do |x|
+            print x.colorize(selector(@@colours))
+            sleep(0.02)
+        end
+    end
+
+    #deletes amount of characters equal to passed string
+    def string_deleter(string)
+        string.chars.each do |x|
+            print TTY:Cursor.backward(1)
+            print TTY:Cursor.clear_char(1)
+            sleep(0.03)
         end
     end
 
