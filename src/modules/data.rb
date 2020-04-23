@@ -58,13 +58,65 @@ module DataModule
             "You think you're the [EXCEPTION] here? WORK HARDER!"
         ]
     }
-
+    #Returns a random set of phrases for the game class
     def phrase_select
         return PHRASES.shuffle.first
     end
 
+    #Returns 5 random prompts based on the key passed
     def prompt_select(key)
         return PROMPTS[key].shuffle[0,5]
+    end
+
+end
+
+module DifficultyModule
+
+    DIFFICULTY = {
+        d1: [
+            :d1, 
+            4,
+            1000,
+            rand(10..15),
+            [rand(0.01..0.03), rand(0.05..0.09), rand(0.05..0.09)],
+            rand(5..7),
+            rand(0.07..0.09),
+            "EASY"
+        ],
+        d2: [
+            :d2,
+            3.5,
+            2000,
+            rand(7..12),
+            [rand(0.01..0.03), rand(0.01..0.03), rand(0.05..0.09)],
+            rand(4..6),
+            rand(0.05..0.09),
+            "MEDIUM"
+        ],
+        d3: [
+            :d3,    
+            3,
+            3000,
+            rand(5..9),
+            [rand(0.005..0.009), rand(0.01..0.03), rand(0.05..0.09)],
+            rand(3..5),
+            rand(0.05..0.06),
+            "HARD"
+        ],
+        d4: [
+            :d4,
+            2.5,
+            4000,
+            rand(3..6),
+            [rand(0.001..0.003), rand(0.005..0.009), rand(0.05..0.09)],
+            rand(2..4),
+            rand(0.03..0.04),
+            "INSANE"
+        ]
+    }
+    #returns selected difficulty array using passed key
+    def difficulty_selector(key)
+        return DIFFICULTY[key]
     end
 
 end
