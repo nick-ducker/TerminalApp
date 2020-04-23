@@ -37,3 +37,4 @@ The next steps will be to start writing the code to pass the tests. Only once al
 * *0950 :* Wrote first status update
 * *1130 :* Passed terminal class test suite
 * *1220 :* Passed phrases and prompts test suite
+* *1240 :* Passed difficulty test suite
