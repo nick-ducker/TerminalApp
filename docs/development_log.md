@@ -53,3 +53,4 @@ The next steps will be to start writing the code to pass the tests. Only once al
 * *1730 :* Passed Warning screen manual test
 * *1735 :* Passed Title screen manual test
 * *1750 :* Passed Game over screen manual tests
+* *1820 :* Passed Rule screen manual tests

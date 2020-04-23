@@ -199,9 +199,11 @@ class ManualTests
 
         #title()
 
-        game_over(0)
+        #game_over(0)
 
-        game_over(10)
+        #game_over(10)
+
+        rules
 
     end
 

@@ -53,10 +53,10 @@ module FunctionsModule
     end
 
     #types a passed string character by character using a passed sleep array in random colours
-    def main_typer(string,sleeparray)
+    def main_typer(string,difficulty)
         string.chars.each do |x|
             print x.colorize(selector(@@colours))
-            sleep(selector(sleeparray))
+            sleep(selector(difficulty[4]))
         end
     end
 
