@@ -70,20 +70,31 @@ class PhrasePromptTest < Test::Unit::TestCase
 
 end
 
-# class DifficultyTest < Test::Unit::TestCase
+class DifficultyTest < Test::Unit::TestCase
 
-#     include DataModule
+    include DifficultyModule
 
-#     def test_difficulty_hash_select
+    def test_difficulty_hash_select
 
-#         assert_equal(8, difficulty_hash_selector(:d1).size, "difficulty hash selector from DataModule does not return an 8 element array from d1")
-#         assert_equal(8, difficulty_hash_selector(:d2).size, "difficulty hash selector from DataModule does not return an 8 element array from d1")
-#         assert_equal(8, difficulty_hash_selector(:d3).size, "difficulty hash selector from DataModule does not return an 8 element array from d1")
-#         assert_equal(8, difficulty_hash_selector(:d4).size, "difficulty hash selector from DataModule does not return an 8 element array from d1")
+        difficulty = difficulty_selector(:d1)
+        assert_equal(8, difficulty.size)
+        assert_equal(Array, difficulty.class)
 
-#     end
+        difficulty = difficulty_selector(:d2)
+        assert_equal(8, difficulty.size)
+        assert_equal(Array, difficulty.class)
 
-# end
+        difficulty = difficulty_selector(:d3)
+        assert_equal(8, difficulty.size)
+        assert_equal(Array, difficulty.class)
+
+        difficulty = difficulty_selector(:d4)
+        assert_equal(8, difficulty.size)
+        assert_equal(Array, difficulty.class)
+        
+    end
+
+end
 
 # class FunctionsTest < Test::Unit::TestCase
 
