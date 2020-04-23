@@ -78,8 +78,8 @@ module FunctionsModule
     #deletes amount of characters equal to passed string
     def string_deleter(string)
         string.chars.each do |x|
-            print TTY:Cursor.backward(1)
-            print TTY:Cursor.clear_char(1)
+            print TTY::Cursor.backward(1)
+            print TTY::Cursor.clear_char(1)
             sleep(0.03)
         end
     end
