@@ -4,19 +4,20 @@ require 'timeout'
 
 require_relative '../modules/data'
 require_relative '../modules/functions'
+require_relative '../modules/ascii'
 
 class Game
 
     include DifficultyModule
     include DataModule
     include FunctionsModule
+    include AsciiArt
 
-    attr_accessor :skipintro, :difficulty, :phrasearr, :promptarr, :cursor, :width, :height, :elapsed, :score
+    attr_accessor :intro, :difficulty, :phrasearr, :promptarr, :cursor, :width, :height, :elapsed, :score
 
     def initialize(argv=[])
 
-        game_crash(argv)
-        @skipintro = false
+        @intro = true
         @difficulty = DIFFICULTY[:d1]
         @phrasearr = phrase_select()
         @promptarr = prompt_select(:d1)
@@ -25,7 +26,39 @@ class Game
         @height = TTY::Screen.height
         @elapsed = nil
         @score = 10000
+        game_crash(argv)
+        command_line_arguments(argv)
 
+        warning()
+        clear()
+        if @intro
+            title() ? nil : (return false)
+            clear()
+            yes_no("Do you want to read the rules and see a live demo?") ? rules() : nil
+            clear()
+            difficulty_key = difficulty_menu()
+            @difficulty = DIFFICULTY[difficulty_key]
+            @promptarr = prompt_select(difficulty_key)
+            clear()
+        end
+        puts @difficulty
+
+
+    end
+
+private
+
+    def command_line_arguments(array)
+        (array.size).times do
+            case 
+            when array.include?("-nc")
+                colour_changer(:white)
+                array.delete("-nc")
+            when array.any?{ |x| ["-d1","-d2","-d3","-d4"].include? x }
+                DIFFICULTY[array[0]]
+                @intro = false                        
+            end
+        end
     end
 
     #This method raises an error if the command line argument includes -crash

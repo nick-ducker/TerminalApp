@@ -115,6 +115,7 @@ module DifficultyModule
         ]
     }
     #returns selected difficulty array using passed key
+    #this might be obselete
     def difficulty_selector(key)
         return DIFFICULTY[key]
     end

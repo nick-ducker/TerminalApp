@@ -125,4 +125,31 @@ def rules
   gets
 end
 
+def countdown
+  second_typer"██████╗ "
+  second_typer"╚════██╗"
+  second_typer" █████╔╝"
+  second_typer" ╚═══██╗"
+  second_typer"██████╔╝"
+  second_typer"╚═════╝ "
+  sleep 1
+  system "clear"
+  second_typer"██████╗ "
+  second_typer"╚════██╗"
+  second_typer" █████╔╝"
+  second_typer"██╔═══╝ "
+  second_typer"███████╗"
+  second_typer"╚══════╝"
+  sleep 1
+  system "clear"
+  second_typer" ██╗"
+  second_typer"███║"
+  second_typer"╚██║"
+  second_typer" ██║"
+  second_typer" ██║"
+  second_typer" ╚═╝"
+  sleep 1
+  system "clear"
+end
+
 end

@@ -203,13 +203,15 @@ class ManualTests
 
         #game_over(10)
 
-        rules
+        #rules()
+        
+        #countdown()
 
     end
 
 end
 
-ManualTests.new
+#ManualTests.new
 
 # def test_timed_input
 #     game = Game.new
@@ -232,3 +234,6 @@ ManualTests.new
 # end
 
 # test_scorer
+
+terminal = Terminal.new(["-d1"])
+terminal.start

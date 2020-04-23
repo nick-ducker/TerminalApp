@@ -149,7 +149,9 @@ module FunctionsModule
         end
     end
 
-
+    def clear
+        system 'clear'
+    end
 
 end
 
