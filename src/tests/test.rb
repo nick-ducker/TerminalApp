@@ -21,7 +21,7 @@ class TerminalTest < Test::Unit::TestCase
 
     def test_rescue_statement
         
-        assert_equal("Sorry :(",Terminal.new([-crash], "The Terminal Class did not rescue the game when an error is raised in the game instance")
+        assert_equal("Sorry :(",Terminal.new([-crash]), "The Terminal Class did not rescue the game when an error is raised in the game instance")
 
     end
 
@@ -69,7 +69,7 @@ class FunctionsTest < Test::Unit::TestCase
 
     def test_colour_readable
 
-        assert_equal(Array, DataModule.colour, "Colour Array of Functions module is not readable outside the module")
+        assert_equal(Array, DataModule.colour.class, "Colour Array of Functions module is not readable outside the module")
 
     end
 
@@ -99,16 +99,16 @@ class FunctionsTest < Test::Unit::TestCase
 
     def test_delete_method
 
-        assert_equal(4, deleter(1,[1,2,3,4,5].size), "Delete method does not delete the passed argument from the passed array")
-        assert_equal(6, deleter(20,[10,20,30,40,5-,60,70].size), "Delete method does not delete the passed argument from the passed array")
+        assert_equal(4, deleter(1,[1,2,3,4,5]).size, "Delete method does not delete the passed argument from the passed array")
+        assert_equal(6, deleter(20,[10,20,30,40,50,60,70]).size, "Delete method does not delete the passed argument from the passed array")
 
     end
 
     def test_checking_method
 
-        assert_equal("true",checker("input","checking the [INPUT]", "Checker method does not return true on matching input"))
-        assert_equal("false",checker("ipnut","checking the [INPUT]", "Checker method does not return false on non-matching input"))
-        assert_equal("no answer",checker("no answer","checking the [INPUT]", "Checker method does not return no answer on no answer input"))
+        assert_equal("true",checker("input","checking the [INPUT]"), "Checker method does not return true on matching input")
+        assert_equal("false",checker("ipnut","checking the [INPUT]"), "Checker method does not return false on non-matching input")
+        assert_equal("no answer",checker("no answer","checking the [INPUT]"), "Checker method does not return no answer on no answer input")
 
     end
 
@@ -121,12 +121,12 @@ class GameTester < Test::Unit::TestCase
         game = Game.new
 
         assert_equal(false,game.skipintro, "Either cannot read @skipintro or is not set to correct default value")
-        assert_equal(Array,game.difficulty, "Either cannot read @difficulty or is not returning an array")
-        assert_equal(Array,game.phrasearr, "Either cannot read @phrasearr or is not returning an array")
-        assert_equal(Array,game.promptarr,"Either cannot read @promptarr or is not returning an array")
+        assert_equal(Array,game.difficulty.class, "Either cannot read @difficulty or is not returning an array")
+        assert_equal(Array,game.phrasearr.class, "Either cannot read @phrasearr or is not returning an array")
+        assert_equal(Array,game.promptarr.class,"Either cannot read @promptarr or is not returning an array")
         assert_equal(TTY::Cursor,game.cursor,"Either cannot read @cursor or it is not returning correct default value")
-        assert_equal(Integer,game.width, "Either cannot read @width or it is not returning an integer")
-        assert_equal(Integer,game.height, "Either cannot read @height or it is not returning an integer")
+        assert_equal(Integer,game.width.class, "Either cannot read @width or it is not returning an integer")
+        assert_equal(Integer,game.height.class, "Either cannot read @height or it is not returning an integer")
         assert_equal(nil,game.elapsed, "Either cannot read @elapsed or it is not returning nil")
         assert_equal(10000,game.score, "Either cannot read @score or it is not returning 10000")
 
