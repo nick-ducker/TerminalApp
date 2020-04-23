@@ -13,13 +13,20 @@ class TerminalTest < Test::Unit::TestCase
         exception = assert_raise("StandardError") { Terminal.new(["-abcdefg"]) }
         assert_equal("Argument not recognized", exception.message)
 
-        # assert_equal(["-nc"],Terminal.new(["-nc"]),"Terminal raised an exception when passed a valid argument")
-        # assert_equal(["-d1"],Terminal.new(["-d1"]),"Terminal raised an exception when passed a valid argument")
-        # assert_equal(["-d4"],Terminal.new(["-d4"]),"Terminal raised an exception when passed a valid argument")
+        terminal = Terminal.new(["-nc"])
+        assert_equal(["-nc"],terminal.argv,"Terminal raised an exception when passed a valid argument")
 
-        # assert_equal(["-d4","-nc"],Terminal.new(["-d4","-nc"]),"Terminal raised an exception when passed more than one valid argument")
+        terminal = Terminal.new(["-d1"])
+        assert_equal(["-d1"],terminal.argv,"Terminal raised an exception when passed a valid argument")
 
-        # assert_equal("Too many arguments provided",Terminal.new(["-d4","-nc","--help"]),"Terminal raised an exception when passed more than one valid argument")
+        terminal = Terminal.new(["-d4"])
+        assert_equal(["-d4"],terminal.argv,"Terminal raised an exception when passed a valid argument")
+
+        terminal = Terminal.new(["-d4","-nc"])
+        assert_equal(["-d4","-nc"],terminal.argv,"Terminal raised an exception when passed more than one valid argument")
+
+        exception = assert_raise("StandardError") { Terminal.new(["-d4","-nc","--help"]) }
+        assert_equal("Too many arguments provided", exception.message)
 
     end
 
