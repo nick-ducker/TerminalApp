@@ -2,8 +2,8 @@ require 'test/unit'
 
 require_relative '../classes/terminal'
 # require_relative '../classes/game'
-# require_relative '../module/data'
-# require_relative '../module/functions'
+require_relative '../modules/data'
+# require_relative '../modules/functions'
 
 class TerminalTest < Test::Unit::TestCase
 
@@ -43,26 +43,32 @@ class TerminalTest < Test::Unit::TestCase
 
 end
 
-# class PhrasePromptTest < Test::Unit::TestCase
+class PhrasePromptTest < Test::Unit::TestCase
     
-#     include DataModule
+    include DataModule
 
-#     def test_phrase_select
+    def test_phrase_select
+        phrases = phrase_select()
+        assert_equal(15, phrases.size)
+    end
 
-#         assert_equal(15, phrase_select().size, "phrase_select method from Data module does not return a 15 element array")
+    def test_prompt_select
 
-#     end
+        prompts = prompt_select(:d1)
+        assert_equal(5, prompts.size)
 
-#     def test_prompt_select
+        prompts = prompt_select(:d2)
+        assert_equal(5, prompts.size)
 
-#         assert_equal(5, prompt_select(:d1).size, "prompt_select method from Data module does not return a 5 element array from d1")
-#         assert_equal(5, prompt_select(:d2).size, "prompt_select method from Data module does not return a 5 element array from d2")
-#         assert_equal(5, prompt_select(:d3).size, "prompt_select method from Data module does not return a 5 element array from d3")
-#         assert_equal(5, prompt_select(:d4).size, "prompt_select method from Data module does not return a 5 element array from d4")
+        prompts = prompt_select(:d3)
+        assert_equal(5, prompts.size)
 
-#     end
+        prompts = prompt_select(:d4)
+        assert_equal(5, prompts.size)
+        
+    end
 
-# end
+end
 
 # class DifficultyTest < Test::Unit::TestCase
 
