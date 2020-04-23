@@ -35,3 +35,4 @@ The next steps will be to start writing the code to pass the tests. Only once al
 ### 23/4/20
 * *0930 :* Debugged unit tests
 * *0950 :* Wrote first status update
+* *1130 :* Passed terminal class test suite
