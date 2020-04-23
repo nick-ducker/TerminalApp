@@ -180,7 +180,9 @@ class ManualTests
 
         #string_deleter("Oh no, don't delete me..")
 
-        yes_no("Do you want to play again?")
+        #yes_no("Do you want to play again?")
+
+        #enter_q()
     end
 
 end

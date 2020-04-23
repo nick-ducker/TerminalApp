@@ -68,7 +68,7 @@ module FunctionsModule
         end
     end
 
-    #types a passed string character by character at a medium pace in green
+    #types a passed string character by character at a medium pace in multicolor
     def third_typer(string)
         string.chars.each do |x|
             print x.colorize(selector(@@colours))
@@ -86,8 +86,34 @@ module FunctionsModule
     end
 
     def yes_no(prompt)
-        TTY::Prompt.new.yes?(prompt)
+        third_typer(prompt)
+        puts
+        return TTY::Prompt.new.yes?("?")
     end
+
+    def enter_q
+
+        third_typer "Press Enter to continue or q to quit"
+        puts
+        running = true
+        while running 
+            input = STDIN.getch
+            case input
+            when "\r" 
+                running = false
+            when "q"
+                running = false
+                return false
+            else
+                next
+            end
+        end
+    end 
+
+    def difficulty_menu
+        third_typer "Select your desired difficulty"
+        puts
+        
 
 end
 
