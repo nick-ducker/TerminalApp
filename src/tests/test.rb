@@ -195,7 +195,9 @@ class ManualTests
         # difficulty = difficulty_selector(:d1)
         # flash("I am being flashed",difficulty,TTY::Screen.height, TTY::Screen.width)
 
-        warning()
+        #warning()
+
+        title()
 
     end
 
