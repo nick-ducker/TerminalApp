@@ -113,7 +113,14 @@ module FunctionsModule
     def difficulty_menu
         third_typer "Select your desired difficulty"
         puts
-        
+        TTY::Prompt.new.select("?") do |menu|
+            menu.choice 'Easy', :d1
+            menu.choice 'Medium', :d2
+            menu.choice 'Hard', :d3
+            menu.choice 'Insane', :d4
+        end
+    end
+
 
 end
 

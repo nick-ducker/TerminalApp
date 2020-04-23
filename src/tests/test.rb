@@ -183,6 +183,9 @@ class ManualTests
         #yes_no("Do you want to play again?")
 
         #enter_q()
+
+        difficulty_menu()
+        
     end
 
 end
