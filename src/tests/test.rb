@@ -30,11 +30,16 @@ class TerminalTest < Test::Unit::TestCase
 
     end
 
-    # def test_rescue_statement
+    def test_rescue_statement
         
-    #     assert_equal("Sorry :(",Terminal.new([-crash]), "The Terminal Class did not rescue the game when an error is raised in the game instance")
+        exception = assert_raise("StandardError") { 
+            terminal = Terminal.new(["-crash"])
+            terminal.start
+        }
 
-    # end
+        assert_equal("Why did you do this to me, John?",exception.message)
+
+    end
 
 end
 

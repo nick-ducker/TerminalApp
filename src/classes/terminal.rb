@@ -1,11 +1,24 @@
 class Terminal
 
+    require_relative 'game'
+
     attr_reader :argv
 
     #The initialize method is passed the command line argument array to validate
     def initialize(argvarray)
 
         @argv = command_line_validator(argvarray)
+        @running = true
+
+    end
+
+    #this method should start the "play again" game loop and listen for false 
+    #from the main game instance
+    def start
+
+        while @running
+            @running = Game.new(@argv)
+        end
 
     end
 
