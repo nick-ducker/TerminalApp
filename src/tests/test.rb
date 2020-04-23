@@ -174,6 +174,11 @@ class ManualTests
     include FunctionsModule
     def initialize
         #main_typer("I am being typed",[0.5,0.05])
+        #second_typer("I am being typed quickly")
+
+        third_typer("Oh no, don't delete me..")
+
+        #string_deleter("Oh no, don't delete me..")
     end
 
 end
