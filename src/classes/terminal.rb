@@ -41,7 +41,7 @@ class Terminal
             when array.size > 2
                 raise StandardError, "Too many arguments provided"
             when array.include?("--help")
-                #SHOW HELP PAGE
+                help_screen()
             when array.include?("-crash")
                 return ["-crash"]
             when array.size <= 2
@@ -50,6 +50,26 @@ class Terminal
         else
             raise StandardError, "Argument not recognized"
         end
+    end
+
+    #This is the help screen that is displayed when --help is used on the command line
+    def help_screen
+        system 'clear'
+        puts "██████╗ ██╗██╗   ██╗███████╗██████╗  █████╗ ██████╗     ██╗  ██╗███████╗██╗     ██████╗ "
+        puts "██╔══██╗██║██║   ██║██╔════╝██╔══██╗██╔══██╗██╔══██╗    ██║  ██║██╔════╝██║     ██╔══██╗"
+        puts "██║  ██║██║██║   ██║█████╗  ██████╔╝███████║██████╔╝    ███████║█████╗  ██║     ██████╔╝"
+        puts "██║  ██║██║╚██╗ ██╔╝██╔══╝  ██╔══██╗██╔══██║██╔══██╗    ██╔══██║██╔══╝  ██║     ██╔═══╝ "
+        puts "██████╔╝██║ ╚████╔╝ ███████╗██████╔╝██║  ██║██║  ██║    ██║  ██║███████╗███████╗██║     "
+        puts "╚═════╝ ╚═╝  ╚═══╝  ╚══════╝╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝    ╚═╝  ╚═╝╚══════╝╚══════╝╚═╝    "
+        puts
+        puts "Welcome to the help screen!"
+        puts
+        puts "Command line options"
+        puts
+        puts "Installation instructions"
+        puts
+        puts "Error handling information"
+        puts 
     end
 
 end
