@@ -197,7 +197,11 @@ class ManualTests
 
         #warning()
 
-        title()
+        #title()
+
+        game_over(0)
+
+        game_over(10)
 
     end
 

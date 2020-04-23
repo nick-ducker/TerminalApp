@@ -75,6 +75,7 @@ module FunctionsModule
             print x.colorize(selector(@@colours))
             sleep(0.02)
         end
+        puts
     end
 
     #deletes amount of characters equal to passed string
@@ -107,7 +108,6 @@ module FunctionsModule
     end
 
     def enter_q
-
         third_typer "Press Enter to continue or q to quit"
         puts
         running = true
