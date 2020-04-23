@@ -38,3 +38,4 @@ The next steps will be to start writing the code to pass the tests. Only once al
 * *1130 :* Passed terminal class test suite
 * *1220 :* Passed phrases and prompts test suite
 * *1240 :* Passed difficulty test suite
+* *1330 :* Passed functions test suite
