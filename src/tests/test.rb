@@ -153,22 +153,22 @@ class FunctionsTest < Test::Unit::TestCase
 
 end
 
-# class GameTester < Test::Unit::TestCase
+class GameTester < Test::Unit::TestCase
 
-#     def test_game_attributes_readable
+    def test_game_attributes_readable
 
-#         game = Game.new
+        game = Game.new
 
-#         assert_equal(false,game.skipintro, "Either cannot read @skipintro or is not set to correct default value")
-#         assert_equal(Array,game.difficulty.class, "Either cannot read @difficulty or is not returning an array")
-#         assert_equal(Array,game.phrasearr.class, "Either cannot read @phrasearr or is not returning an array")
-#         assert_equal(Array,game.promptarr.class,"Either cannot read @promptarr or is not returning an array")
-#         assert_equal(TTY::Cursor,game.cursor,"Either cannot read @cursor or it is not returning correct default value")
-#         assert_equal(Integer,game.width.class, "Either cannot read @width or it is not returning an integer")
-#         assert_equal(Integer,game.height.class, "Either cannot read @height or it is not returning an integer")
-#         assert_equal(nil,game.elapsed, "Either cannot read @elapsed or it is not returning nil")
-#         assert_equal(10000,game.score, "Either cannot read @score or it is not returning 10000")
+        assert_equal(false,game.skipintro, "Either cannot read @skipintro or is not set to correct default value")
+        assert_equal(Array,game.difficulty.class, "Either cannot read @difficulty or is not returning an array")
+        assert_equal(Array,game.phrasearr.class, "Either cannot read @phrasearr or is not returning an array")
+        assert_equal(Array,game.promptarr.class,"Either cannot read @promptarr or is not returning an array")
+        assert_equal(TTY::Cursor,game.cursor,"Either cannot read @cursor or it is not returning correct default value")
+        assert_equal(Integer,game.width.class, "Either cannot read @width or it is not returning an integer")
+        assert_equal(Integer,game.height.class, "Either cannot read @height or it is not returning an integer")
+        assert_equal(nil,game.elapsed, "Either cannot read @elapsed or it is not returning nil")
+        assert_equal(10000,game.score, "Either cannot read @score or it is not returning 10000")
 
-#     end
+    end
 
-# end
+end
