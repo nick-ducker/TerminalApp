@@ -32,12 +32,8 @@ class TerminalTest < Test::Unit::TestCase
 
     def test_rescue_statement
         
-        exception = assert_raise("StandardError") { 
-            terminal = Terminal.new(["-crash"])
-            terminal.start
-        }
-
-        assert_equal("Why did you do this to me, John?",exception.message)
+        terminal = Terminal.new(["-crash"])
+        assert_equal(false,terminal.start)
 
     end
 

@@ -16,7 +16,20 @@ class Terminal
     #from the main game instance
     def start
         while @running
-            @running = Game.new(@argv)
+            begin
+                @running = Game.new(@argv)
+            rescue => e
+                puts "The game crashed!"
+                puts
+                puts "Error class: #{e.class}"
+                puts
+                puts "Error message: #{e.message}"
+                puts
+                puts "Error backtrace: #{pp e.backtrace}"
+                puts
+                puts "Sorry =("
+                return @running = false
+            end
         end
     end
 
