@@ -1,3 +1,5 @@
+require 'colorize'
+
 module FunctionsModule
 
     @@colours = [
@@ -14,7 +16,7 @@ module FunctionsModule
         :cyan,
         :light_cyan,
     ]
-    
+
     #reader method for @@colours
     def colours
         return @@colours
@@ -48,4 +50,13 @@ module FunctionsModule
         input.casecmp(match) == 0 ? (return "true") : (return "false") 
     end
 
+    #types a passed string character by character using a passed sleep array in random colours
+    def main_typer(string,sleeparray)
+        string.chars.each do |x|
+            print x.colorize(selector(@@colours))
+            sleep(selector(sleeparray))
+        end
+    end
+
 end
+

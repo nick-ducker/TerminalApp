@@ -168,3 +168,14 @@ class GameTester < Test::Unit::TestCase
     end
 
 end
+
+class ManualTests
+   
+    include FunctionsModule
+    def initialize
+        #main_typer("I am being typed",[0.5,0.05])
+    end
+
+end
+
+ManualTests.new
