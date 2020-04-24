@@ -116,6 +116,7 @@ module FunctionsModule
             case input
             when "\r" 
                 running = false
+                return true
             when "q"
                 running = false
                 return false

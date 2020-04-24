@@ -5,19 +5,21 @@ class Terminal
     attr_reader :argv
 
     #The initialize method is passed the command line argument array to validate
-    def initialize(argvarray)
+    def initialize(argvarray=Array.new)
 
         @argv = command_line_validator(argvarray)
-        @running = true
 
     end
 
     #this method should start the "play again" game loop and listen for false 
     #from the main game instance
     def start
-        while @running
+        running = true
+        while running
             begin
-                @running = Game.new(@argv)
+                game = Game.new(@argv)
+                game.game_start
+                running = game.running
             rescue => e
                 puts "The game crashed!"
                 puts
@@ -28,7 +30,7 @@ class Terminal
                 puts "Error backtrace: #{pp e.backtrace}"
                 puts
                 puts "Sorry =("
-                return @running = false
+                running = false
             end
         end
     end
@@ -47,9 +49,15 @@ class Terminal
             when array.size <= 2
                 return array
             end
+        elsif array.empty?
+            return array
         else
             raise StandardError, "Argument not recognized"
         end
+    end
+
+    def running(bool)
+        @running = bool
     end
 
     #This is the help screen that is displayed when --help is used on the command line

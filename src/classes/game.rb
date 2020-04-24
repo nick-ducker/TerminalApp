@@ -13,10 +13,11 @@ class Game
     include FunctionsModule
     include AsciiArt
 
-    attr_accessor :intro, :difficulty, :phrasearr, :promptarr, :cursor, :width, :height, :elapsed, :score
+    attr_accessor :running, :intro, :difficulty, :phrasearr, :promptarr, :cursor, :width, :height, :elapsed, :score
 
     def initialize(argv=[])
 
+        @running = true
         @intro = true
         @difficulty = DIFFICULTY[:d1]
         @phrasearr = phrase_select()
@@ -28,26 +29,41 @@ class Game
         @score = 10000
         game_crash(argv)
         command_line_arguments(argv)
+    end
 
+    def game_start
+
+        clear()
         warning()
+
         clear()
         if @intro
-            title() ? nil : (return false)
-            clear()
-            yes_no("Do you want to read the rules and see a live demo?") ? rules() : nil
-            clear()
-            difficulty_key = difficulty_menu()
-            @difficulty = DIFFICULTY[difficulty_key]
-            @promptarr = prompt_select(difficulty_key)
-            clear()
+            if title()
+                clear()
+                yes_no("Do you want to read the rules and see a live demo?") ? rules() : nil
+                clear()
+                difficulty_key = difficulty_menu()
+                @difficulty = DIFFICULTY[difficulty_key]
+                @promptarr = prompt_select(difficulty_key)
+                clear()
+            else
+                @running = false
+                exit
+            end
         end
-        puts @difficulty
+        
+        until @promptarr.empty?
+            check_score()
+            puts 'looping'
+        end
 
+        game_over(@score)
 
     end
 
 private
 
+    #Method takes the filtered command line arguments and changes instance variables accordingly
     def command_line_arguments(array)
         (array.size).times do
             case 
@@ -55,7 +71,8 @@ private
                 colour_changer(:white)
                 array.delete("-nc")
             when array.any?{ |x| ["-d1","-d2","-d3","-d4"].include? x }
-                DIFFICULTY[array[0]]
+                key = (array[0])[1,2].to_sym
+                @difficulty = DIFFICULTY[key]
                 @intro = false                        
             end
         end
@@ -99,6 +116,12 @@ private
             type_and_delete "You ran out of time!"
             @score = (@score - @difficulty[2]).to_i
             type_and_delete "Your score is now #{@score >= 0 ? @score : 0}"
+        end
+    end
+
+    def check_score
+        if @score == 0
+            @promptarr = Array.new
         end
     end
 

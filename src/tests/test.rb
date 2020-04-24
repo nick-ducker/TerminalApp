@@ -235,5 +235,8 @@ end
 
 # test_scorer
 
-terminal = Terminal.new(["-d1"])
+# terminal = Terminal.new(["-d2","-d3"])
+# terminal.start
+
+terminal = Terminal.new
 terminal.start

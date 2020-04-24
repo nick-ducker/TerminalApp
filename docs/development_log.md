@@ -57,3 +57,5 @@ The next steps will be to start writing the code to pass the tests. Only once al
 
 ### 24/4/20
 * *0920 :* Passed Countdown and Skip intro manual tests
+* *1000 :* Passed Enter Q title and skip rules manual tests
+* 
