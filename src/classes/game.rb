@@ -61,17 +61,19 @@ class Game
                 @difficulty[3].times do
                     clear()
                     phrase = selector(phrases)
+                    puts score_display(@score,@difficulty)
                     random_cursor(@height,@width)
                     main_typer(phrase,@difficulty)
-                    flash(phrase,@difficulty,@height,@width)
+                    flash(phrase,@difficulty,@height,@width,@score)
                     phrases = deleter(phrase,phrases)
                 end
 
             clear()
             prompt = selector(@promptarr)
+            puts score_display(@score,@difficulty)
             random_cursor(@height,@width)
             main_typer(prompt,@difficulty)
-            flash(prompt,@difficulty,@height,@width)
+            flash(prompt,@difficulty,@height,@width,@score)
             input = timed_input()
             scorer(checker(input,prompt))
             deleter(prompt,@promptarr)

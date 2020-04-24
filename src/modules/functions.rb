@@ -30,8 +30,8 @@ module FunctionsModule
     end
 
     #returns a string of score and difficulty
-    def score(score,difficulty)
-        return "Current Score: #{score}  |  Difficulty: #{difficulty}"
+    def score_display(score, difficulty)
+        return "Current Score: #{score}  |  Difficulty: #{difficulty[7]}".colorize(@@colours[0])
     end
 
     #selects a random element from an array
@@ -141,9 +141,10 @@ module FunctionsModule
         print TTY::Cursor.down(rand(0..(height - 5))) + TTY::Cursor.forward(rand(0..(width - 10)))
     end
 
-    def flash(string,difficulty,height,width)
+    def flash(string,difficulty,height,width,score)
         difficulty[5].times do
             system 'clear'
+            puts score_display(score,difficulty)
             random_cursor(height,width)
             puts string.colorize(selector(@@colours))
             sleep(difficulty[6])
@@ -157,5 +158,6 @@ module FunctionsModule
     def br
         puts
     end
+
 end
 
