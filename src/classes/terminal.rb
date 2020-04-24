@@ -27,8 +27,6 @@ class Terminal
                 puts
                 puts "Error message: #{e.message}"
                 puts
-                puts "Error backtrace: #{pp e.backtrace}"
-                puts
                 puts "Sorry =("
                 return running = false
             end
