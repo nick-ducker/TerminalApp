@@ -93,7 +93,7 @@ module FunctionsModule
             print x.colorize(selector(@@colours))
             sleep(0.02)
         end
-        sleep(2)
+        sleep(1.5)
         string.chars.each do |x|
             print TTY::Cursor.backward(1)
             print TTY::Cursor.clear_char(1)
