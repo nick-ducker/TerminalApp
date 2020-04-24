@@ -26,7 +26,7 @@ class Game
         @width = TTY::Screen.width
         @height = TTY::Screen.height
         @elapsed = nil
-        @score = 0
+        @score = 10000
         game_crash(argv)
         command_line_arguments(argv)
     end

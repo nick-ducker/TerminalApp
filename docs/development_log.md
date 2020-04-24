@@ -58,5 +58,5 @@ The next steps will be to start writing the code to pass the tests. Only once al
 ### 24/4/20
 * *0920 :* Passed Countdown and Skip intro manual tests
 * *1000 :* Passed Enter Q title and skip rules manual tests
-* *1015 :* Passe Check score and prompt array manual tests
-* 
+* *1015 :* Passed Check score and prompt array manual tests
+* *1020 :* Passed no colour mode manual test

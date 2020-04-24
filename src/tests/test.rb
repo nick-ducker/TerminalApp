@@ -238,5 +238,8 @@ end
 # terminal = Terminal.new(["-d2","-d3"])
 # terminal.start
 
-terminal = Terminal.new
+# terminal = Terminal.new
+# terminal.start
+
+terminal = Terminal.new(["-nc","-d3"])
 terminal.start
