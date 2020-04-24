@@ -1,4 +1,4 @@
-![Divebar logo}(/docs/imgs/divebartitle.png)
+![Divebar logo](/docs/imgs/divebartitle.png)
 
 ## Installation Instructions
 
