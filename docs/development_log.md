@@ -73,4 +73,5 @@ After that, I'll revisit the user stories and make sure I'm ticking off all the 
 
 ### 24/4/20
 * *1130 :* Implementation complete
-* 
+* *1900 :* Fixed bug where score checker wouldn't clear prompt array if score was 0
+* *1925 :* Fixed bug where gets would crash the program if you passed a command line arg and also fixed a bug where any typing done before the prompt stopped moving would influence the timed input.

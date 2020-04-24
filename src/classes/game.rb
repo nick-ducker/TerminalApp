@@ -1,6 +1,7 @@
 require 'tty-cursor'
 require 'tty-screen'
 require 'timeout'
+require 'io/console'
 
 require_relative '../modules/data'
 require_relative '../modules/functions'
@@ -33,28 +34,28 @@ class Game
 
     def game_start
 
-        # clear()
-        # warning()
+        clear()
+        warning()
 
-        # clear()
-        # if @intro
-        #     if title()
-        #         clear()
-        #         yes_no("Do you want to read the rules and see a live demo?") ? rules() : nil
-        #         clear()
-        #         difficulty_key = difficulty_menu()
-        #         @difficulty = DIFFICULTY[difficulty_key]
-        #         @promptarr = prompt_select(difficulty_key)
-        #     else
-        #         @running = false
-        #         exit
-        #     end
-        # end
+        clear()
+        if @intro
+            if title()
+                clear()
+                yes_no("Do you want to read the rules and see a live demo?") ? rules() : nil
+                clear()
+                difficulty_key = difficulty_menu()
+                @difficulty = DIFFICULTY[difficulty_key]
+                @promptarr = prompt_select(difficulty_key)
+            else
+                @running = false
+                exit
+            end
+        end
         
-        # clear()
-        # countdown()
+        clear()
+        countdown()
 
-        until @promptarr.empty?
+        until @promptarr == []
 
             phrases = @phrasearr.dup
                 @difficulty[3].times do
@@ -94,6 +95,7 @@ private
             when array.any?{ |x| ["-d1","-d2","-d3","-d4"].include? x }
                 key = (array[0])[1,2].to_sym
                 @difficulty = DIFFICULTY[key]
+                @promptarr = prompt_select(key)
                 @intro = false                        
             end
         end
@@ -110,7 +112,8 @@ private
         begin
             timer = Timeout::timeout(@difficulty[1]) {
                 starting = Process.clock_gettime(Process::CLOCK_MONOTONIC)
-                input = gets.strip
+                $stdin.iflush
+                input = STDIN.gets.strip
                 ending = Process.clock_gettime(Process::CLOCK_MONOTONIC)
                 @elapsed = (ending - starting).round(2)
                 return input
@@ -141,8 +144,8 @@ private
     end
 
     def check_score
-        if @score == 0
-            @promptarr = Array.new
+        if @score <= 0
+            @promptarr = []
         end
     end
 
