@@ -154,5 +154,8 @@ module FunctionsModule
         system 'clear'
     end
 
+    def br
+        puts
+    end
 end
 

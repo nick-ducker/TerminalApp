@@ -60,3 +60,17 @@ The next steps will be to start writing the code to pass the tests. Only once al
 * *1000 :* Passed Enter Q title and skip rules manual tests
 * *1015 :* Passed Check score and prompt array manual tests
 * *1020 :* Passed no colour mode manual test
+* *1030 :* Re-passed initial unit test suite
+
+### 24/4/20 Status update
+After a lot more time than I initially anticipated, I'm finally finished with all my testing. It was interesting to learn a lot more about unit testing and wrap my head around how it works a little better. 
+
+I was surprised to find that the unit testing was actually much more intuitive and fast than doing manual tests. This may also be because most of what I was testing in my manual tests were more loop, graphic and input oriented, therefore sucking up a heap more time.
+
+Additionally, I was surprised how much of the program I ended up writing just by designing many tests that covered most of the programs functioning. At this stage, I'll need to go through the implementation plan to fill in the gaps and flesh out the actual game loops using the tested functions. 
+
+After that, I'll revisit the user stories and make sure I'm ticking off all the boxes there before moving on to adding anything extra that I want to include, refactoring my code and updating my documentation to reflect any small changes introduced in the actual writing of the program.
+
+### 24/4/20
+* *1130 :* Implementation complete
+* 

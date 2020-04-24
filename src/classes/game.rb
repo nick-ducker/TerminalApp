@@ -15,7 +15,7 @@ class Game
 
     attr_accessor :running, :intro, :difficulty, :phrasearr, :promptarr, :cursor, :width, :height, :elapsed, :score
 
-    def initialize(argv)
+    def initialize(argv=Array.new)
 
         @running = true
         @intro = true
@@ -33,26 +33,48 @@ class Game
 
     def game_start
 
-        clear()
-        warning()
+        # clear()
+        # warning()
 
-        clear()
-        if @intro
-            if title()
-                clear()
-                yes_no("Do you want to read the rules and see a live demo?") ? rules() : nil
-                clear()
-                difficulty_key = difficulty_menu()
-                @difficulty = DIFFICULTY[difficulty_key]
-                @promptarr = prompt_select(difficulty_key)
-                clear()
-            else
-                @running = false
-                exit
-            end
-        end
+        # clear()
+        # if @intro
+        #     if title()
+        #         clear()
+        #         yes_no("Do you want to read the rules and see a live demo?") ? rules() : nil
+        #         clear()
+        #         difficulty_key = difficulty_menu()
+        #         @difficulty = DIFFICULTY[difficulty_key]
+        #         @promptarr = prompt_select(difficulty_key)
+        #     else
+        #         @running = false
+        #         exit
+        #     end
+        # end
         
+        # clear()
+        # countdown()
+
         until @promptarr.empty?
+
+            phrases = @phrasearr.dup
+                @difficulty[3].times do
+                    clear()
+                    phrase = selector(phrases)
+                    random_cursor(@height,@width)
+                    main_typer(phrase,@difficulty)
+                    flash(phrase,@difficulty,@height,@width)
+                    phrases = deleter(phrase,phrases)
+                end
+
+            clear()
+            prompt = selector(@promptarr)
+            random_cursor(@height,@width)
+            main_typer(prompt,@difficulty)
+            flash(prompt,@difficulty,@height,@width)
+            input = timed_input()
+            scorer(checker(input,prompt))
+            deleter(prompt,@promptarr)
+
             check_score()
         end
 

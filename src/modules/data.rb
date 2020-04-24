@@ -3,10 +3,60 @@ require 'faker'
 module DataModule
 
     PHRASES = [
-        Array.new(15, Faker::TvShows::TheITCrowd.quote),
-        Array.new(15, Faker::TvShows::RickAndMorty.quote),
-        Array.new(15, Faker::Movies::Lebowski.quote)
+        [   Faker::TvShows::TheITCrowd.quote,
+            Faker::TvShows::TheITCrowd.quote,
+            Faker::TvShows::TheITCrowd.quote,
+            Faker::TvShows::TheITCrowd.quote,
+            Faker::TvShows::TheITCrowd.quote,
+            Faker::TvShows::TheITCrowd.quote,
+            Faker::TvShows::TheITCrowd.quote,
+            Faker::TvShows::TheITCrowd.quote,
+            Faker::TvShows::TheITCrowd.quote,
+            Faker::TvShows::TheITCrowd.quote,
+            Faker::TvShows::TheITCrowd.quote,
+            Faker::TvShows::TheITCrowd.quote,
+            Faker::TvShows::TheITCrowd.quote,
+            Faker::TvShows::TheITCrowd.quote,
+            Faker::TvShows::TheITCrowd.quote
+        ],
+
+        [   Faker::TvShows::RickAndMorty.quote,
+            Faker::TvShows::RickAndMorty.quote,
+            Faker::TvShows::RickAndMorty.quote,
+            Faker::TvShows::RickAndMorty.quote,
+            Faker::TvShows::RickAndMorty.quote,
+            Faker::TvShows::RickAndMorty.quote,
+            Faker::TvShows::RickAndMorty.quote,
+            Faker::TvShows::RickAndMorty.quote,
+            Faker::TvShows::RickAndMorty.quote,
+            Faker::TvShows::RickAndMorty.quote,
+            Faker::TvShows::RickAndMorty.quote,
+            Faker::TvShows::RickAndMorty.quote,
+            Faker::TvShows::RickAndMorty.quote,
+            Faker::TvShows::RickAndMorty.quote,
+            Faker::TvShows::RickAndMorty.quote
+        ],
+
+        [   Faker::Movies::Lebowski.quote,
+            Faker::Movies::Lebowski.quote,
+            Faker::Movies::Lebowski.quote,
+            Faker::Movies::Lebowski.quote,
+            Faker::Movies::Lebowski.quote,
+            Faker::Movies::Lebowski.quote,
+            Faker::Movies::Lebowski.quote,
+            Faker::Movies::Lebowski.quote,
+            Faker::Movies::Lebowski.quote,
+            Faker::Movies::Lebowski.quote,
+            Faker::Movies::Lebowski.quote,
+            Faker::Movies::Lebowski.quote,
+            Faker::Movies::Lebowski.quote,
+            Faker::Movies::Lebowski.quote,
+            Faker::Movies::Lebowski.quote
+        ]
     ]
+
+    Faker::TvShows::RickAndMorty.quote
+    Faker::Movies::Lebowski.quote
 
     PROMPTS = {
         d1: [
@@ -78,7 +128,7 @@ module DifficultyModule
             4,
             1000,
             rand(10..15),
-            [rand(0.01..0.03), rand(0.05..0.09), rand(0.05..0.09)],
+            [rand(0.005..0.009), rand(0.03..0.06), rand(0.03..0.06)],
             rand(5..7),
             rand(0.07..0.09),
             "EASY"
@@ -88,7 +138,7 @@ module DifficultyModule
             3.5,
             2000,
             rand(7..12),
-            [rand(0.01..0.03), rand(0.01..0.03), rand(0.05..0.09)],
+            [rand(0.005..0.009), rand(0.03..0.06), rand(0.03..0.06)],
             rand(4..6),
             rand(0.05..0.09),
             "MEDIUM"
@@ -98,7 +148,7 @@ module DifficultyModule
             3,
             3000,
             rand(5..9),
-            [rand(0.005..0.009), rand(0.01..0.03), rand(0.05..0.09)],
+            [rand(0.005..0.009), rand(0.03..0.06), rand(0.03..0.06)],
             rand(3..5),
             rand(0.05..0.06),
             "HARD"
@@ -108,7 +158,7 @@ module DifficultyModule
             2.5,
             4000,
             rand(3..6),
-            [rand(0.001..0.003), rand(0.005..0.009), rand(0.05..0.09)],
+            [rand(0.005..0.009), rand(0.03..0.06), rand(0.03..0.06)],
             rand(2..4),
             rand(0.03..0.04),
             "INSANE"

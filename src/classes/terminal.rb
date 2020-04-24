@@ -30,7 +30,7 @@ class Terminal
                 puts "Error backtrace: #{pp e.backtrace}"
                 puts
                 puts "Sorry =("
-                running = false
+                return running = false
             end
         end
     end
