@@ -15,7 +15,7 @@ class Game
 
     attr_accessor :running, :intro, :difficulty, :phrasearr, :promptarr, :cursor, :width, :height, :elapsed, :score
 
-    def initialize(argv=[])
+    def initialize(argv)
 
         @running = true
         @intro = true
@@ -26,7 +26,7 @@ class Game
         @width = TTY::Screen.width
         @height = TTY::Screen.height
         @elapsed = nil
-        @score = 10000
+        @score = 0
         game_crash(argv)
         command_line_arguments(argv)
     end
@@ -54,10 +54,9 @@ class Game
         
         until @promptarr.empty?
             check_score()
-            puts 'looping'
         end
 
-        game_over(@score)
+        @running = game_over(@score)
 
     end
 
