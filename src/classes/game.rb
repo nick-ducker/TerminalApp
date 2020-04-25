@@ -7,6 +7,7 @@ require_relative '../modules/data'
 require_relative '../modules/functions'
 require_relative '../modules/ascii'
 
+#The main game class that is responsible for the flow of each instantiated game. 
 class Game
 
     include DifficultyModule
@@ -32,6 +33,7 @@ class Game
         command_line_arguments(argv)
     end
 
+    #After the game is started, this method will start the main game loop
     def game_start
 
         clear()
@@ -110,6 +112,7 @@ private
         end
     end
 
+    #Starts timeout for input as well as flushing the keyboard buffer so previous key strikes will not influence answer
     def timed_input
         begin
             timer = Timeout::timeout(@difficulty[1]) {
@@ -125,6 +128,7 @@ private
         end
     end
 
+    #Changes the score according to the given string by the checker method and displays appropriate message
     def scorer(string)
         if string == "true"
             system "clear"
@@ -145,6 +149,7 @@ private
         end
     end
 
+    #Checks the score each prompt and will set the prompt array to an empty array, therefore ending the game, if the score is 0
     def check_score
         if @score <= 0
             @promptarr = []
