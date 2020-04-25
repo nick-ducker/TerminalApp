@@ -68,32 +68,6 @@ class PhrasePromptTest < Test::Unit::TestCase
 
 end
 
-class DifficultyTest < Test::Unit::TestCase
-
-    include DifficultyModule
-
-    def test_difficulty_hash_select
-
-        difficulty = difficulty_selector(:d1)
-        assert_equal(8, difficulty.size)
-        assert_equal(Array, difficulty.class)
-
-        difficulty = difficulty_selector(:d2)
-        assert_equal(8, difficulty.size)
-        assert_equal(Array, difficulty.class)
-
-        difficulty = difficulty_selector(:d3)
-        assert_equal(8, difficulty.size)
-        assert_equal(Array, difficulty.class)
-
-        difficulty = difficulty_selector(:d4)
-        assert_equal(8, difficulty.size)
-        assert_equal(Array, difficulty.class)
-        
-    end
-
-end
-
 class FunctionsTest < Test::Unit::TestCase
 
     include FunctionsModule
