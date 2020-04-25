@@ -1,3 +1,5 @@
+
+#This class acts as a game instantiator and looper. It also filters ARGV input, rescues unexpected game errors into a formatted message and contains the help screen for program.
 class Terminal
 
     require_relative 'game'
@@ -11,8 +13,8 @@ class Terminal
 
     end
 
-    #this method should start the "play again" game loop and listen for false 
-    #from the main game instance
+    #this method starts the "play again" game loop and listens for false 
+    #from the main game instance. It also formats any unexpected errors and ends the game
     def start
         running = true
         while running
@@ -26,6 +28,8 @@ class Terminal
                 puts "Error class: #{e.class}"
                 puts
                 puts "Error message: #{e.message}"
+                puts
+                puts "#{e.backtrace}"
                 puts
                 puts "Sorry =("
                 return running = false
@@ -53,10 +57,6 @@ class Terminal
         else
             raise StandardError, "Argument not recognized"
         end
-    end
-
-    def running(bool)
-        @running = bool
     end
 
     #This is the help screen that is displayed when --help is used on the command line
