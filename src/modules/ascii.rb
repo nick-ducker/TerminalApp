@@ -3,11 +3,13 @@ require_relative 'data'
 
 require 'tty-screen'
 
+#Module to contain all the large ASCII titles for the game as well as large blocks of text required.
 module AsciiArt
 
   include FunctionsModule
   include DifficultyModule
 
+  #warning screen shown at the start of each game
   def warning
     second_typer "██╗    ██╗ █████╗ ██████╗ ███╗   ██╗██╗███╗   ██╗ ██████╗ "
     second_typer "██║    ██║██╔══██╗██╔══██╗████╗  ██║██║████╗  ██║██╔════╝ "
@@ -16,11 +18,12 @@ module AsciiArt
     second_typer "╚███╔███╔╝██║  ██║██║  ██║██║ ╚████║██║██║ ╚████║╚██████╔╝"
     second_typer " ╚══╝╚══╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝╚═╝  ╚═══╝ ╚═════╝ "
     puts
-    second_typer "    This game contains, flashing and fast moving text"
-    second_typer "             Player discretion is advised"
+    second_typer "This game contains flashing and fast moving coloured text"
+    second_typer "           Player discretion is advised"
     sleep(4)
   end
 
+  #title screen for game instances
   def title
     second_typer "██████╗ ██╗██╗   ██╗███████╗██████╗  █████╗ ██████╗ "
     second_typer "██╔══██╗██║██║   ██║██╔════╝██╔══██╗██╔══██╗██╔══██╗"
@@ -32,6 +35,7 @@ module AsciiArt
     print "      "; enter_q
   end
 
+  #game over screen and control flow for displaying appropriate win or lose messages
   def game_over(score)
     second_typer" ██████╗  █████╗ ███╗   ███╗███████╗ ██████╗ ██╗   ██╗███████╗██████╗ "
     second_typer"██╔════╝ ██╔══██╗████╗ ████║██╔════╝██╔═══██╗██║   ██║██╔════╝██╔══██╗"
@@ -54,6 +58,7 @@ module AsciiArt
     end
   end
 
+  #rules title screen that clears before printing 
   def rules_title
     system "clear"
     second_typer "██████╗ ██╗   ██╗██╗     ███████╗███████╗"
@@ -64,6 +69,7 @@ module AsciiArt
     second_typer "╚═╝  ╚═╝ ╚═════╝ ╚══════╝╚══════╝╚══════╝"
 end
 
+#rules automated demo method
 def rules
   rules_title
   puts
@@ -125,6 +131,7 @@ def rules
   gets
 end
 
+#countdown that shows before the game begins
 def countdown
   second_typer"██████╗ "
   second_typer"╚════██╗"
