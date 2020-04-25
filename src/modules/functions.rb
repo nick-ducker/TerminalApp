@@ -2,8 +2,9 @@ require 'colorize'
 require 'tty-cursor'
 require 'tty-prompt'
 
+#This module is intended to house the game functions not related to game class instance variables
 module FunctionsModule
-
+    #Colour array used for the game in normal colour settings
     @@colours = [
         :green,
         :light_red,
@@ -101,12 +102,14 @@ module FunctionsModule
         end
     end
 
+    #yes no method that takes a simply prompt that is typed out before the question is asked.
     def yes_no(prompt)
         third_typer(prompt)
         puts
         return TTY::Prompt.new.yes?("?")
     end
 
+    #enter or q method used for title screen. Blocks all input except enter or q
     def enter_q
         third_typer "Press Enter to continue or q to quit"
         puts
@@ -126,6 +129,7 @@ module FunctionsModule
         end
     end 
 
+    #difficulty selection menu to set desired difficulty
     def difficulty_menu
         third_typer "Select your desired difficulty"
         puts
@@ -137,10 +141,12 @@ module FunctionsModule
         end
     end
 
+    #places the cursor in a random place according to the height and width given
     def random_cursor(height,width)
         print TTY::Cursor.down(rand(0..(height - 5))) + TTY::Cursor.forward(rand(0..(width - 10)))
     end
 
+    #flashes a string using a difficulty hash to dictate amount of flashes, and time between flashes. Also places cursor randomly and displays score and difficulty
     def flash(string,difficulty,height,width,score)
         difficulty[5].times do
             system 'clear'
@@ -151,10 +157,12 @@ module FunctionsModule
         end
     end
 
+    #a simple system clear shortener
     def clear
         system 'clear'
     end
 
+    #a simple break shortener
     def br
         puts
     end
