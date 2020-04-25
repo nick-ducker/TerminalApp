@@ -97,6 +97,7 @@ end
 class FunctionsTest < Test::Unit::TestCase
 
     include FunctionsModule
+    include DifficultyModule
 
     def test_colour_readable
 
@@ -116,8 +117,11 @@ class FunctionsTest < Test::Unit::TestCase
 
     def test_score_display
 
-        assert_equal("Current Score: 10000  |  Difficulty: Easy",score(10000,"Easy"), "Score display method does not display correctly")
-        assert_equal("Current Score: 999  |  Difficulty: Medium",score(999,"Medium"), "Score display method does not display correctly")
+        difficulty = DIFFICULTY[:d1]
+        assert_equal("\e[0;32;49mCurrent Score: 10000  |  Difficulty: EASY\e[0m",score_display(10000,difficulty).force_encoding('UTF-8'), "Score display method does not display correctly")
+
+        difficulty = DIFFICULTY[:d2]
+        assert_equal("\e[0;32;49mCurrent Score: 999  |  Difficulty: MEDIUM\e[0m",score_display(999,difficulty).force_encoding('UTF-8'), "Score display method does not display correctly")
 
     end
 
