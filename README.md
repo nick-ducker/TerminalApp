@@ -29,7 +29,10 @@
 
 4. **You have two choices in how check for and install any Ruby Gems needed for the game** 
 
-    a. Run the bash script by XYZ
+    a. Run the bash script by using the command below:
+    ```
+    ./INSTALL.sh
+    ```
 
     b. **Manual installation using bundler**
       
@@ -75,7 +78,10 @@
 
 2. If you run into any errors, update your gems using the bash script provided or running a gem update command
     ```
-    bash file command
+    ./INSTALL.sh
+
+    OR
+    
     gem update --system
     ```
 
