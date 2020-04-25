@@ -1,5 +1,6 @@
 require 'faker'
 
+#This module holds the phrases and prompts used for the game class whenever it is instantiated
 module DataModule
 
     PHRASES = [
@@ -54,9 +55,6 @@ module DataModule
             Faker::Movies::Lebowski.quote
         ]
     ]
-
-    Faker::TvShows::RickAndMorty.quote
-    Faker::Movies::Lebowski.quote
 
     PROMPTS = {
         d1: [
@@ -120,8 +118,17 @@ module DataModule
 
 end
 
+#This module holds all the difficulty variables for the game class instance
 module DifficultyModule
 
+    #[0] difficulty symbol
+    #[1] seconds given to type answer
+    #[2] score penalty if timeout or wrong answer
+    #[3] amount of phrases that will be flashed
+    #[4] array of random sleep ranges to be chosen from each time a character is typed with the main_typer method
+    #[5] number of times the phrases/prompt are flashed
+    #[6] time between flashes
+    #[7] string name of the difficulty
     DIFFICULTY = {
         d1: [
             :d1, 
@@ -164,10 +171,5 @@ module DifficultyModule
             "INSANE"
         ]
     }
-    #returns selected difficulty array using passed key
-    #this might be obselete
-    def difficulty_selector(key)
-        return DIFFICULTY[key]
-    end
 
 end
