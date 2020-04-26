@@ -81,3 +81,7 @@ After that, I'll revisit the user stories and make sure I'm ticking off all the 
 * *1640 :* Commented all code
 * *1700 :* Created shell script file for easy installation
 * *1720 :* DRY review complete
+  
+### 26/4/20
+* *0940 :* Playtesting Complete
+* 
