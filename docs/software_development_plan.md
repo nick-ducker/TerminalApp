@@ -272,8 +272,8 @@ The QTE mechanic is classically based around some kind of graphical action seque
 <details>
   <summary>Table</summary>
 
-  | Feature | Description of feature | Test Case ID | Expected Outcome | Actual Outcome | Is this a problem? | Changes/Comments |
-  | ------ | --- | --- | --- | -|- |- |- | -| -|
+  | Feature             | Description of feature | Test Case ID | Expected Outcome | Actual Outcome | Is this a problem? | Changes/Comments |
+  | ------              | ---                    | ---          | ---               | -             |-                   |-                 |
   | command line --help |User is able to pass --help at the command line to bring up a help screen | 1 | help screen displayed from command line | nothing | Yes | I didn't allow pass the ARGV input to the class itself |
   | | | 2 | help screen displayed from command line |	displays help screen |	Nope! |	Changed the call to go through the init.rb file and passes it correctly to the terminal class |
   |Main typing method|	types out a passed string using a passed array to randomly choose sleep time between each character. Also colourizes randomly |	1 |	String to be typed out on screen in random colours with different pauses between characters |	After a lot of finicking to make it print, it worked properly |	No, but annoying to test ||
