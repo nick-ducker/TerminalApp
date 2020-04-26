@@ -1,5 +1,10 @@
 ![Divebar logo](/docs/imgs/divebartitle.png)
 
+##  Links for Development Documentation
+* [Software Development Plan](docs/software_development_plan.md)
+* [Development Log](docs/development_log.md)
+* [Program Flowchart](docs/imgs/divebarflowchart.png)
+
 ## Installation Instructions
 
 1. **Ensure Ruby is installed on your machine.** 
