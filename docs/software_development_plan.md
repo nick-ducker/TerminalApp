@@ -238,6 +238,9 @@ The QTE mechanic is classically based around some kind of graphical action seque
 ----
 
 ## Trello Board
+
+[Trello Board](https://trello.com/b/daSBDJpB/terminal-app)
+
 <details>
   <summary>Starting Trello Board</summary>
 
