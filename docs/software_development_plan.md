@@ -229,6 +229,44 @@ The QTE mechanic is classically based around some kind of graphical action seque
 ----
 ----
 
+## Flowchart
+
+![Divebar logo](imgs/divebarflowchart.png)
+
+
+----
+----
+
+## Trello Board
+<details>
+  <summary>Starting Trello Board</summary>
+
+  ![Starting Trello 1](imgs/trellostart1.png)
+
+  ![Starting Trello 2](imgs/trellostart2.png)
+</details>
+
+<details>
+  <summary>Mid Trello Board</summary>
+
+  ![Mid Trello 1](imgs/trellomid1.png)
+
+  ![Mid Trello 2](imgs/trellomid2.png)
+</details>
+
+<details>
+  <summary>Finished Trello Board</summary>
+
+  ![Finished Trello 1](imgs/trellofinished1.png)
+  
+  ![Finished Trello 2](imgs/trellofinished2.png)
+</details>
+
+----
+----
+
+
+
 ## Manual testing table
 
 <details>
