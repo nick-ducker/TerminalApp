@@ -1,6 +1,6 @@
-# Terminal App Development Log
+![Divebar logo](/docs/imgs/divebartitle.png)
 
-## By Nick Ducker
+## Development log
 
 ### 20/4/20
 * *1550 :* Created GitHub Repo and cloned to PC
