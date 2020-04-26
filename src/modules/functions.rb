@@ -4,6 +4,7 @@ require 'tty-prompt'
 
 #This module is intended to house the game functions not related to game class instance variables
 module FunctionsModule
+
     #Colour array used for the game in normal colour settings
     @@colours = [
         :green,
@@ -67,7 +68,7 @@ module FunctionsModule
             print x.colorize(@@colours[0])
             sleep(0.003)
         end
-        puts
+        br()
     end
 
     #types a passed string character by character at a medium pace in multicolor
@@ -76,7 +77,7 @@ module FunctionsModule
             print x.colorize(selector(@@colours))
             sleep(0.02)
         end
-        puts
+        br()
     end
 
     #deletes amount of characters equal to passed string
@@ -105,14 +106,14 @@ module FunctionsModule
     #yes no method that takes a simply prompt that is typed out before the question is asked.
     def yes_no(prompt)
         third_typer(prompt)
-        puts
+        br()
         return TTY::Prompt.new.yes?("?")
     end
 
     #enter or q method used for title screen. Blocks all input except enter or q
     def enter_q
         third_typer "Press Enter to continue or q to quit"
-        puts
+        br()
         running = true
         while running 
             input = STDIN.getch
@@ -132,7 +133,7 @@ module FunctionsModule
     #difficulty selection menu to set desired difficulty
     def difficulty_menu
         third_typer "Select your desired difficulty"
-        puts
+        br()
         TTY::Prompt.new.select("?") do |menu|
             menu.choice 'Easy', :d1
             menu.choice 'Medium', :d2
@@ -149,7 +150,7 @@ module FunctionsModule
     #flashes a string using a difficulty hash to dictate amount of flashes, and time between flashes. Also places cursor randomly and displays score and difficulty
     def flash(string,difficulty,height,width,score)
         difficulty[5].times do
-            system 'clear'
+            clear()
             puts score_display(score,difficulty)
             random_cursor(height,width)
             puts string.colorize(selector(@@colours))

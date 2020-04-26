@@ -79,4 +79,5 @@ After that, I'll revisit the user stories and make sure I'm ticking off all the 
 
 ### 25/4/20
 * *1640 :* Commented all code
-* *1700 :* Created shell script file for easy installatino
+* *1700 :* Created shell script file for easy installation
+* *1720 :* DRY review complete

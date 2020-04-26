@@ -31,11 +31,13 @@ class Game
         @score = 10000
         game_crash(argv)
         command_line_arguments(argv)
+        print @cursor.hide
     end
 
     #After the game is started, this method will start the main game loop
     def game_start
 
+        
         clear()
         warning()
 
@@ -77,6 +79,7 @@ class Game
             main_typer(prompt,@difficulty)
             flash(prompt,@difficulty,@height,@width,@score)
             input = timed_input()
+            print @cursor.hide
             scorer(checker(input,prompt))
             deleter(prompt,@promptarr)
 
@@ -117,6 +120,7 @@ private
         begin
             timer = Timeout::timeout(@difficulty[1]) {
                 starting = Process.clock_gettime(Process::CLOCK_MONOTONIC)
+                print @cursor.show
                 $stdin.iflush
                 input = STDIN.gets.strip
                 ending = Process.clock_gettime(Process::CLOCK_MONOTONIC)
@@ -124,6 +128,7 @@ private
                 return input
             }
         rescue => exception
+            $stdin.iflush
             return "no answer"            
         end
     end

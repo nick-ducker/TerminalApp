@@ -1,15 +1,15 @@
+require_relative 'game'
+
 
 #This class acts as a game instantiator and looper. It also filters ARGV input, rescues unexpected game errors into a formatted message and contains the help screen for program.
 class Terminal
 
-    require_relative 'game'
-
     attr_reader :argv
 
     #The initialize method is passed the command line argument array to validate
-    def initialize(argvarray=Array.new)
+    def initialize
 
-        @argv = command_line_validator(argvarray)
+        @argv = command_line_validator(ARGV)
 
     end
 
@@ -36,6 +36,8 @@ class Terminal
             end
         end
     end
+
+private
 
     #This method takes the ARGV input from the command line and either shows the
     #help page, returns the inputs or raises an error
