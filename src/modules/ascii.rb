@@ -1,168 +1,173 @@
+# frozen_string_literal: true
+
 require_relative 'functions'
 require_relative 'data'
 
 require 'tty-screen'
 
-#Module to contain all the large ASCII titles for the game as well as large blocks of text required.
+# Module to contain all the large ASCII titles for the game as well as large blocks of text required.
 module AsciiArt
-
   include FunctionsModule
   include DifficultyModule
 
-  #warning screen shown at the start of each game
+  # warning screen shown at the start of each game
   def warning
-    second_typer "██╗    ██╗ █████╗ ██████╗ ███╗   ██╗██╗███╗   ██╗ ██████╗ "
-    second_typer "██║    ██║██╔══██╗██╔══██╗████╗  ██║██║████╗  ██║██╔════╝ "
-    second_typer "██║ █╗ ██║███████║██████╔╝██╔██╗ ██║██║██╔██╗ ██║██║  ███╗"
-    second_typer "██║███╗██║██╔══██║██╔══██╗██║╚██╗██║██║██║╚██╗██║██║   ██║"
-    second_typer "╚███╔███╔╝██║  ██║██║  ██║██║ ╚████║██║██║ ╚████║╚██████╔╝"
-    second_typer " ╚══╝╚══╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝╚═╝  ╚═══╝ ╚═════╝ "
-    br()
-    second_typer "This game contains flashing and fast moving coloured text"
-    second_typer "           Player discretion is advised"
+    second_typer '██╗    ██╗ █████╗ ██████╗ ███╗   ██╗██╗███╗   ██╗ ██████╗ '
+    second_typer '██║    ██║██╔══██╗██╔══██╗████╗  ██║██║████╗  ██║██╔════╝ '
+    second_typer '██║ █╗ ██║███████║██████╔╝██╔██╗ ██║██║██╔██╗ ██║██║  ███╗'
+    second_typer '██║███╗██║██╔══██║██╔══██╗██║╚██╗██║██║██║╚██╗██║██║   ██║'
+    second_typer '╚███╔███╔╝██║  ██║██║  ██║██║ ╚████║██║██║ ╚████║╚██████╔╝'
+    second_typer ' ╚══╝╚══╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝╚═╝  ╚═══╝ ╚═════╝ '
+    br
+    second_typer 'This game contains flashing and fast moving coloured text'
+    second_typer '           Player discretion is advised'
     sleep(4)
   end
 
-  #title screen for game instances
+  # title screen for game instances
   def title
-    second_typer "██████╗ ██╗██╗   ██╗███████╗██████╗  █████╗ ██████╗ "
-    second_typer "██╔══██╗██║██║   ██║██╔════╝██╔══██╗██╔══██╗██╔══██╗"
-    second_typer "██║  ██║██║██║   ██║█████╗  ██████╔╝███████║██████╔╝"
-    second_typer "██║  ██║██║╚██╗ ██╔╝██╔══╝  ██╔══██╗██╔══██║██╔══██╗"
-    second_typer "██████╔╝██║ ╚████╔╝ ███████╗██████╔╝██║  ██║██║  ██║"
-    second_typer "╚═════╝ ╚═╝  ╚═══╝  ╚══════╝╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝"
-    br()
-    print "      "; enter_q
+    second_typer '██████╗ ██╗██╗   ██╗███████╗██████╗  █████╗ ██████╗ '
+    second_typer '██╔══██╗██║██║   ██║██╔════╝██╔══██╗██╔══██╗██╔══██╗'
+    second_typer '██║  ██║██║██║   ██║█████╗  ██████╔╝███████║██████╔╝'
+    second_typer '██║  ██║██║╚██╗ ██╔╝██╔══╝  ██╔══██╗██╔══██║██╔══██╗'
+    second_typer '██████╔╝██║ ╚████╔╝ ███████╗██████╔╝██║  ██║██║  ██║'
+    second_typer '╚═════╝ ╚═╝  ╚═══╝  ╚══════╝╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝'
+    br
+    print '      '; enter_q
   end
 
-  #game over screen and control flow for displaying appropriate win or lose messages
+  # game over screen and control flow for displaying appropriate win or lose messages
   def game_over(score)
-    second_typer" ██████╗  █████╗ ███╗   ███╗███████╗ ██████╗ ██╗   ██╗███████╗██████╗ "
-    second_typer"██╔════╝ ██╔══██╗████╗ ████║██╔════╝██╔═══██╗██║   ██║██╔════╝██╔══██╗"
-    second_typer"██║  ███╗███████║██╔████╔██║█████╗  ██║   ██║██║   ██║█████╗  ██████╔╝"
-    second_typer"██║   ██║██╔══██║██║╚██╔╝██║██╔══╝  ██║   ██║╚██╗ ██╔╝██╔══╝  ██╔══██╗"
-    second_typer"╚██████╔╝██║  ██║██║ ╚═╝ ██║███████╗╚██████╔╝ ╚████╔╝ ███████╗██║  ██║"
-    second_typer" ╚═════╝ ╚═╝  ╚═╝╚═╝     ╚═╝╚══════╝ ╚═════╝   ╚═══╝  ╚══════╝╚═╝  ╚═╝"
-    br()
+    second_typer ' ██████╗  █████╗ ███╗   ███╗███████╗ ██████╗ ██╗   ██╗███████╗██████╗ '
+    second_typer '██╔════╝ ██╔══██╗████╗ ████║██╔════╝██╔═══██╗██║   ██║██╔════╝██╔══██╗'
+    second_typer '██║  ███╗███████║██╔████╔██║█████╗  ██║   ██║██║   ██║█████╗  ██████╔╝'
+    second_typer '██║   ██║██╔══██║██║╚██╔╝██║██╔══╝  ██║   ██║╚██╗ ██╔╝██╔══╝  ██╔══██╗'
+    second_typer '╚██████╔╝██║  ██║██║ ╚═╝ ██║███████╗╚██████╔╝ ╚████╔╝ ███████╗██║  ██║'
+    second_typer ' ╚═════╝ ╚═╝  ╚═╝╚═╝     ╚═╝╚══════╝ ╚═════╝   ╚═══╝  ╚══════╝╚═╝  ╚═╝'
+    br
     sleep(1)
-    if score > 0
-      print"            " ; third_typer "Well done! Your final score was #{score}."
-      sleep (1)
-      print"                  " ; type_and_delete "Can you beat it next time?"
-      print"        " ; return yes_no "Play again?"
+    if score.positive?
+      print '            '
+      third_typer "Well done! Your final score was #{score}."
+      sleep 1
+      print '                  '
+      type_and_delete 'Can you beat it next time?'
+      print '        '
     else
-      print"                          " ; third_typer "Too fast for you!"
-      sleep (1)
-      print"                " ; type_and_delete "Or maybe you're just getting warmed up..."
-      print"             " ; return yes_no "Play again?"
+      print '                          '
+      third_typer 'Too fast for you!'
+      sleep 1
+      print '                '
+      type_and_delete "Or maybe you're just getting warmed up..."
+      print '             '
     end
+    yes_no 'Play again?'
   end
 
-  #rules title screen that clears before printing 
+  # rules title screen that clears before printing
   def rules_title
-    system "clear"
-    second_typer "██████╗ ██╗   ██╗██╗     ███████╗███████╗"
-    second_typer "██╔══██╗██║   ██║██║     ██╔════╝██╔════╝"
-    second_typer "██████╔╝██║   ██║██║     █████╗  ███████╗"
-    second_typer "██╔══██╗██║   ██║██║     ██╔══╝  ╚════██║"
-    second_typer "██║  ██║╚██████╔╝███████╗███████╗███████║"
-    second_typer "╚═╝  ╚═╝ ╚═════╝ ╚══════╝╚══════╝╚══════╝"
-end
+    system 'clear'
+    second_typer '██████╗ ██╗   ██╗██╗     ███████╗███████╗'
+    second_typer '██╔══██╗██║   ██║██║     ██╔════╝██╔════╝'
+    second_typer '██████╔╝██║   ██║██║     █████╗  ███████╗'
+    second_typer '██╔══██╗██║   ██║██║     ██╔══╝  ╚════██║'
+    second_typer '██║  ██║╚██████╔╝███████╗███████╗███████║'
+    second_typer '╚═╝  ╚═╝ ╚═════╝ ╚══════╝╚══════╝╚══════╝'
+  end
 
-#rules automated demo method
-def rules
-  rules_title
-  br()
-  second_typer "Welcome to DiveBar! The worst job you never (or may have) had!"
-  sleep(2)
-  br()
-  second_typer "The premise is simple. You're a bartender at a busy bar one weekend evening."
-  second_typer "It's your job to keep the night running smoothly by performing tasks as quickly as possible when something comes up!"
-  sleep(4)
-  br()
-  second_typer "During the night, you'll be privy to all sorts of strange, wonderous banter from your patrons."
-  second_typer "This will probably be distracting, but pay attention! You never know when something will need you attention!"
-  sleep(5)
+  # rules automated demo method
+  def rules
+    rules_title
+    br
+    second_typer 'Welcome to DiveBar! The worst job you never (or may have) had!'
+    sleep(2)
+    br
+    second_typer "The premise is simple. You're a bartender at a busy bar one weekend evening."
+    second_typer "It's your job to keep the night running smoothly by performing tasks as quickly as possible when something comes up!"
+    sleep(4)
+    br
+    second_typer "During the night, you'll be privy to all sorts of strange, wonderous banter from your patrons."
+    second_typer 'This will probably be distracting, but pay attention! You never know when something will need you attention!'
+    sleep(5)
 
-  rules_title
-  br()
-  second_typer "Lets see how the game works"
-  sleep(2)
-  second_typer "During your shift you'll hear(see) all sorts of strangeness, like this..."
-  sleep(3)
+    rules_title
+    br
+    second_typer 'Lets see how the game works'
+    sleep(2)
+    second_typer "During your shift you'll hear(see) all sorts of strangeness, like this..."
+    sleep(3)
 
-  clear()
-  difficulty = DIFFICULTY[:d1]
-  main_typer("Camouflage paint is belief in the interrelatedness of all things.",difficulty)
-  flash("Camouflage paint is belief in the interrelatedness of all things.",difficulty,TTY::Screen.height, TTY::Screen.width,10000)
-  sleep(1)
+    clear
+    difficulty = DIFFICULTY[:d1]
+    main_typer('Camouflage paint is belief in the interrelatedness of all things.', difficulty)
+    flash('Camouflage paint is belief in the interrelatedness of all things.', difficulty, TTY::Screen.height, TTY::Screen.width, 10_000)
+    sleep(1)
 
-  rules_title
-  br()
-  second_typer "Depending on how busy it is (difficulty setting), you might see a lot of these, or only a few."
-  sleep(4)
-  br()
-  second_typer "But pay attention, because eventually something will [NEED] something!"
-  sleep(4)
-  br()
-  second_typer "when you see a word in [SQUARE] [BRACKETS], you'll need to type it out and press enter as fast as you can."
-  sleep(4)
-  br()
-  second_typer "If you're too slow or you type it wrong, you'll lose a large amount of points!"
-  sleep(4)
-  br()
-  second_typer "If you're fast enough, you'll only lose a small amount of points based on your reaction time."
-  sleep(4)
-  br()
-  second_typer "Lets see how it works..."
-  sleep(2)
+    rules_title
+    br
+    second_typer 'Depending on how busy it is (difficulty setting), you might see a lot of these, or only a few.'
+    sleep(4)
+    br
+    second_typer 'But pay attention, because eventually something will [NEED] something!'
+    sleep(4)
+    br
+    second_typer "when you see a word in [SQUARE] [BRACKETS], you'll need to type it out and press enter as fast as you can."
+    sleep(4)
+    br
+    second_typer "If you're too slow or you type it wrong, you'll lose a large amount of points!"
+    sleep(4)
+    br
+    second_typer "If you're fast enough, you'll only lose a small amount of points based on your reaction time."
+    sleep(4)
+    br
+    second_typer 'Lets see how it works...'
+    sleep(2)
 
-  clear()
-  main_typer("OH My GOD! SOMEONES PUKING! GET A [MOP]!!!",difficulty)
-  flash("OH My GOD! SOMEONES PUKING! GET A [MOP]!!!",difficulty,TTY::Screen.height, TTY::Screen.width,10000)
-  clear()
-  promptcolour = colours()
-  puts "OH My GOD! SOMEONES PUKING! GET A [MOP]!!!".colorize(promptcolour[0])
-  sleep(1)
-  main_typer("[MOP]",difficulty)
-  sleep(1)
-  
-  rules_title
-  br()
-  second_typer "Simple!"
-  sleep(1)
-  second_typer "Enjoy your first shift ;)"
-  sleep(1)
-  second_typer "Press Enter to Continue"
-  gets
-end
+    clear
+    main_typer('OH My GOD! SOMEONES PUKING! GET A [MOP]!!!', difficulty)
+    flash('OH My GOD! SOMEONES PUKING! GET A [MOP]!!!', difficulty, TTY::Screen.height, TTY::Screen.width, 10_000)
+    clear
+    promptcolour = colours
+    puts 'OH My GOD! SOMEONES PUKING! GET A [MOP]!!!'.colorize(promptcolour[0])
+    sleep(1)
+    main_typer('[MOP]', difficulty)
+    sleep(1)
 
-#countdown that shows before the game begins
-def countdown
-  second_typer"██████╗ "
-  second_typer"╚════██╗"
-  second_typer" █████╔╝"
-  second_typer" ╚═══██╗"
-  second_typer"██████╔╝"
-  second_typer"╚═════╝ "
-  sleep 1
-  system "clear"
-  second_typer"██████╗ "
-  second_typer"╚════██╗"
-  second_typer" █████╔╝"
-  second_typer"██╔═══╝ "
-  second_typer"███████╗"
-  second_typer"╚══════╝"
-  sleep 1
-  system "clear"
-  second_typer" ██╗"
-  second_typer"███║"
-  second_typer"╚██║"
-  second_typer" ██║"
-  second_typer" ██║"
-  second_typer" ╚═╝"
-  sleep 1
-  system "clear"
-end
+    rules_title
+    br
+    second_typer 'Simple!'
+    sleep(1)
+    second_typer 'Enjoy your first shift ;)'
+    sleep(1)
+    second_typer 'Press Enter to Continue'
+    gets
+  end
 
+  # countdown that shows before the game begins
+  def countdown
+    second_typer '██████╗ '
+    second_typer '╚════██╗'
+    second_typer ' █████╔╝'
+    second_typer ' ╚═══██╗'
+    second_typer '██████╔╝'
+    second_typer '╚═════╝ '
+    sleep 1
+    system 'clear'
+    second_typer '██████╗ '
+    second_typer '╚════██╗'
+    second_typer ' █████╔╝'
+    second_typer '██╔═══╝ '
+    second_typer '███████╗'
+    second_typer '╚══════╝'
+    sleep 1
+    system 'clear'
+    second_typer ' ██╗'
+    second_typer '███║'
+    second_typer '╚██║'
+    second_typer ' ██║'
+    second_typer ' ██║'
+    second_typer ' ╚═╝'
+    sleep 1
+    system 'clear'
+  end
 end
