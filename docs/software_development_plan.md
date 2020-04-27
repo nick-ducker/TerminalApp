@@ -275,52 +275,53 @@ The QTE mechanic is classically based around some kind of graphical action seque
 <details>
   <summary>Table</summary>
 
-  | Feature             | Description of feature | Test Case ID | Expected Outcome | Actual Outcome | Is this a problem? | Changes/Comments |
-  | ------              | ---                    | ---          | ---               | -             |-                   |-                 |
-  | command line --help |User is able to pass --help at the command line to bring up a help screen | 1 | help screen displayed from command line | nothing | Yes | I didn't allow pass the ARGV input to the class itself |
-  | | | 2 | help screen displayed from command line |	displays help screen |	Nope! |	Changed the call to go through the init.rb file and passes it correctly to the terminal class |
-  |Main typing method|	types out a passed string using a passed array to randomly choose sleep time between each character. Also colourizes randomly |	1 |	String to be typed out on screen in random colours with different pauses between characters |	After a lot of finicking to make it print, it worked properly |	No, but annoying to test ||
-  |Second typing method |	quickly writes a passed string in green|	1	|types quickly in green |	types at a medium pace in green | 	Ish	| I'm going to make it faster	|
-  | | |2 |types quickly in green| types real fast now!|	No	||
-  |Third typing method|	types out a passed string at a medium pace. Also colourizes randomly|	1	|types out medium in multicolour|	same as expected|	no|	made it a tiny bit faster|
-  |String deleter method	|deletes amount of characters equal to passed string|	1	|deletes a typed string|	TTY cursor gem threw an error|	yes|	forgot a :|
-  | | |2|	deletes a typed string|	as expected	|no||
-  |Y/N prompt|	Should return true or false respectively|	1|	asks a yes or no q and then returns true or false|	as expected|	no||
-  |Enter/Q prompt|	Should return true or false respectively|	1	|Prompts user for enter or q and wont progress until gets that input|	as expected	|no||
-  |Display selection method|	Should display difficulties in menu format and allow you to choose one, then assign the difficulty instance variable |	1 |	Prompts user and returns d1..d4	|as expected|	no||
-  |Random Cursor method|	Should move the cursor to a random place using passed width and height console variables|	1|	Moves cursor to a random place on the screen|	as expected	|no||
-  |Flash method	|Should flash a passed string a passed amount of times. Also will flash in random places each time in a different colour|	1|	flashes string as desribed|	Undefined method for difficulty selector|	yes|	I think I need to assign my difficulty variable first for this test to work.|
-  | | |2|	flashes string as desribed|	as expected|	no|	Didn't req the right module, duh|
-  |Timed input w/o answer|	Should time out based on passed variable and return no answer string|	1|	returns no answer string|	as expected|	no||
-  |Timed input w/ answer|	Should return answer and set elapsed instance variable to time taken to input|	1|	returns answer an elapsed time|	doesn't set variable|	yes|	Need to figure out why its not setting and returning this variable|
-  | | | 2	|returns answer an elapsed time |	as expected|	no|	I needed to move the method into the game class itself as its a variable setting class|
-  |Scoring method true|	Should display positive message and show new score deducted by elapsed * 100 to 2 decimal places|	1|	As described|	as expected	|no|	also needs to sit in the game class as it changes instance variables|
-  |Scoring method false|	Should display negative message and show new score deducted by passed penalty integer |	1	|as described|	almost as expected, only deducts 5 points|	yes	|This has to do with the difficulty variable, will tweak the array positions|
-  |||2|	as decribed	|as expected|	no||
-  |Scoring method no answer |	Should display different negative message and show new score deducted by passed penalty integer|	1	|as decribed|	as expected|	no| |
-  |Warning screen|	Should show the user a warning screen regarding flashing components of game for 3 second	1|	as described	|as expected|	no||
-  |Title screen|	Should type out title quickly and wait for user input|	1|	as described	as expected	|no||
-  |Game over more than 0	|Should show a positive game over message with final score and ask player if they want to play again|	1	|as described	|as expected	|no||
-  |Game over 0 |	Should show a negative game over message with final score and ask player if they want to play again	|1|as described|	as expected	|no||
-  |Game over replay|	Should allow the player to replay or quit depending on y or no answer|	1	|as described|	as expected|	no	||
-  |Rules screen|	Should show rules and prompt for input. Should then demo the game automaticallty, then prompt for user input to continue.|	1|	as described	|as expected|	no	||
-  |Countdown|	Should countdown 3 2 1 typed fast and colourized|	1|	as described	|as expected|	no	||
-  |Skip intro|	Game will skip the intro if given a command line arg to set difficulty|	1	|as described|	did not skip intro|	yes|	I need to tweak my case statments, It's not finding any difficulty things|
-  | | |2|	as described|	as expected	|no|	It will now take the first difficulty argument|
-  |Quit at game title|	Game will quit if you press q at the title screen|	1	|as described	Didn't quit, just kept going|	yes|	Will need to call a method to change the bool value, maybe?|
-  | | |2|	as described|	Finally works|	no|	This took a bit of finagling, but now the terminal reads the game instance running variable each loop to decide if it should loop again|			
-  |Skip rules|	Game will skip rules if no is selected from skip rules section|	1	| as described	|as expected	|no||
-  |Check score |	Game will check score and end before command prompt is empty if it is equal to 0|	1|	as described|	as expected	|no	|	|		
-  |Prompt array while loop |	Game will end once there are no more prompts left in the prompt array	|1|	as described|	as expected	|no	|	|
-  |No colour mode|	Game will run in black and white if given correct argument|	1	|as described	as expected| 	no	||
-  |Game runs|	Game should run error free from the init.rb file on normal playthough|	1|	Full play through with on easy with no command line arguments	|Crashed after 1 prompt flash	|yes|	Changed the data array phrases.| Unfortunately Faker will create the same quote 15 times if you duplicate it 15 times in a new array, which makes sense.|
-  | | |1|	Full play through with on easy with no command line arguments|	as expected|	no	|Hooray!|			
-  |Game will play through normally on all difficulty settings|	1|	Full play through on all difficulties	|as expected|	no|	|
-  |Game will play through normally with all -d settings|	using all -d1 to -d4 settings + combos of -d's|	1	|as described|	some words would be incorrect even when correct	|yes|	The checker was reading ?,! and commas as part of the word if it was tacked on at the end of bracket|
-  | | |2|	as described	|as expected	|no|	yay!|
-  |Game will play through with -nc args passed|	Game should run completely in b/w with -nc passed|	1|	as decribed|	one line in the rules demo was coloured|	yes|	easy bugfix|
-  | | | 2|	as decribed	|as expected	|no	||
-  |Game will always display help menu when passed| --help	help screen should always take precedence over any other command line arg|	1|	As described	|as expected|	no	|
-  |What happens if I mash the keyboard during the game typing phases?|	The keyboard mash will probably mess with the typing function|	1	|as described|	as expected|	not really|	It doesnt break the game, but it doesnt look good either. I'll see if I can add a keyboard input blocker on the last day|
+| Feature             | Description of feature | Test Case ID / Testing Method | Expected Outcome | Actual Outcome | Is this a problem? | Changes/Comments |
+| ------              | ---                    | ---          | ---               | -             |-                   |-                 |
+| Command line --help |User is able to pass --help at the command line to bring up a help screen | 1<br/>pass --help at command line | Help screen displayed from command line | Nothing | Yes | I didn't allow pass the ARGV input to the class itself |
+| | | 2<br/>pass --help at command line | Help screen displayed from command line |	Displays help screen |	No |	Changed the call to go through the init.rb file and passes it correctly to the terminal class |
+|round typer method|	Types out a passed string using a passed array to randomly choose sleep time between each character. Also colourizes randomly |	1<br/>Call method in test.rb and watch method |	String to be typed out on screen in random colours with different pauses between characters |	After a lot of tweaking, it worked properly |	No, but annoying to test ||
+|fast green typer method | Quickly writes a passed string in green |	1<br/>Call method in test.rb and watch method	|Types quickly in green |	Types at a medium pace in green | 	Ish	| I'm going to make it faster	|
+| | |2<br/>Call method in test.rb and watch method |types quickly in green| types real fast now!|	No	||
+|medium rainbow typer method| Types out a passed string at a medium pace. Also colourizes randomly |	1<br/>Call method in test.rb and watch method	|Types out medium in multicolour| Same as expected | No | Made it a tiny bit faster |
+|string deleter method	|Deletes amount of characters equal to passed string|	1 <br/>Call method in test.rb and watch method	|Deletes a typed string|	TTY cursor gem threw an error| Yes | forgot a ":" |
+| | |2<br/>Call method in test.rb| Deletes a typed string |	as expected	|no||
+|Y/N prompt|	Should return true or false respectively| 1<br/>Call method in test.rb and interact with method |	asks a yes or no q and then returns true or false|	as expected|	no||
+|Enter/Q prompt|	Should return true or false respectively|	1<br/>Call method in test.rb and interact with method	|Prompts user for enter or q and wont progress until gets that input|	as expected	|no||
+|Display selection method|	Should display difficulties in menu format and allow you to choose one, then assign the difficulty instance variable |	1<br/>Call method in test.rb and interact with method |	Prompts user and returns d1..d4	|as expected|	no||
+|Random Cursor method|	Should move the cursor to a random place using passed width and height console variables| 1<br/>Call method in test.rb and watch method |	Moves cursor to a random place on the screen|	as expected	|no||
+|Flash method	|Should flash a passed string a passed amount of times. Also will flash in random places each time in a different colour| 1<br/>Call method in test.rb and watch method |	flashes string as desribed|	Undefined method for difficulty selector|	yes|	I think I need to assign my difficulty variable first for this test to work.|
+| | |2<br/>Call method in test.rb and watch method|	flashes string as desribed|	as expected|	no|	Didn't req the right module, duh|
+|Timed input w/o answer|	Should time out based on passed variable and return no answer string| 1<br/>Call method in test.rb and watch method |	returns no answer string|	as expected|	no||
+|Timed input w/ answer|	Should return answer and set elapsed instance variable to time taken to input| 1<br/>Call method in test.rb and interact with method |	returns answer an elapsed time|	doesn't set variable|	yes|	Need to figure out why its not setting and returning this variable|
+| | | 2<br/>Call method in test.rb and interact with method	|returns answer an elapsed time |	as expected|	no|	I needed to move the method into the game class itself as its a variable setting class|
+|Scoring method true|	Should display positive message and show new score deducted by elapsed * 100 to 2 decimal places| 1<br/>Call method in test.rb and watch method |	As described|	as expected	|no|	also needs to sit in the game class as it changes instance variables|
+|Scoring method false|	Should display negative message and show new score deducted by passed penalty integer |	1<br/>Call method in test.rb and watch method	|as described|	almost as expected, only deducts 5 points|	yes	|This has to do with the difficulty variable, will tweak the array positions|
+|||2<br/>Call method in test.rb and watch method|	as described	|as expected|	no||
+|Scoring method no answer |	Should display different negative message and show new score deducted by passed penalty integer|	1<br/>Call method in test.rb and watch method	|as described|	as expected|	no| |
+|Warning screen| Should show the user a warning screen regarding flashing components of game for 3 second | 1<br/>Call method in test.rb and watch method         | as described                                                 | as expected                                     |no||
+|Title screen|	Should type out title quickly and wait for user input| 1<br/>Call method in test.rb and watch method |	as described	|as expected|no||
+|Game over more than 0	|Should show a positive game over message with final score and ask player if they want to play again|	1<br/>Call method in test.rb and watch method	|as described	|as expected	|no||
+|Game over 0 |	Should show a negative game over message with final score and ask player if they want to play again	|1<br/>Call method in test.rb and watch method|as described|	as expected	|no||
+|Game over replay|	Should allow the player to replay or quit depending on y or no answer|	1<br/>Play game and interact with method	|as described|	as expected|	no	||
+|Rules screen|	Should show rules and prompt for input. Should then demo the game automaticallty, then prompt for user input to continue.| 1<br/>Call method in test.rb and watch method |	as described	|as expected|	no	||
+|Countdown|	Should countdown 3 2 1 typed fast and colourized| 1<br/>Call method in test.rb and watch method |	as described	|as expected|	no	||
+|Skip intro|	Game will skip the intro if given a command line arg to set difficulty|	1<br/>Play game and watch method	|as described|	did not skip intro|	yes|	I need to tweak my case statments, It's not finding any difficulty things|
+| | |2<br/>Play game and watch method|	as described|	as expected	|no|	It will now take the first difficulty argument|
+|Quit at game title|	Game will quit if you press q at the title screen|	1<br/>Play game and watch method	|as described| Didn't quit, just kept going | yes |Will need to call a method to change the bool value, maybe?|
+| | |2<br/>Play game and watch method|	as described|	Finally works|	no|	This took a bit of finagling, but now the terminal reads the game instance running variable each loop to decide if it should loop again|
+|Skip rules|	Game will skip rules if no is selected from skip rules section|	1<br/>Play game and watch method	| as described	|as expected	|no||
+|Check score |	Game will check score and end before command prompt is empty if it is equal to 0| 1<br/>Play game and watch method |	as described|	as expected	|no	|	|
+|Prompt array while loop |	Game will end once there are no more prompts left in the prompt array	|1<br/>Play game and watch method|	as described|	as expected	|no	|	|
+|No colour mode|	Game will run in black and white if given correct argument|	1<br/>Play game and watch method	|as described| as expected	|no||
+|Game runs|	Game should run error free from the init.rb file on normal playthough| 1<br/>Play game a lot |	Full play through with on easy with no command line arguments	|Crashed after 1 prompt flash	|yes|	Changed the data array phrases.|
+| | |2<br/>Play game a lot|	Full play through with on easy with no command line arguments|	as expected|	no	|Hooray!|
+|Game will play through normally on all difficulty settings|  |	1<br/>Play game a lot	|Full play through on all difficulties| as expected | no ||
+|Game will play through normally with all -d settings|	using all -d1 to -d4 settings + combos of -d's|	1<br/>Play game a lot	|as described|	some words would be incorrect even when correct	|yes|	The checker was reading ?,! and commas as part of the word if it was tacked on at the end of bracket|
+| | |2<br/>Play game a lot|	as described	|as expected	|no|	yay!|
+|Game will play through with -nc args passed|	Game should run completely in b/w with -nc passed| 1<br/>Play game a lot |	as decribed|	one line in the rules demo was coloured|	yes|	easy bugfix|
+| | | 2<br/>Play game a lot |	as decribed	|as expected	|no	||
+|Game will always display help menu when passed| --help	help screen should always take precedence over any other command line arg| 1<br/>Play game a lot |	As described	|as expected|	no	||
+|What happens if I mash the keyboard during the game typing phases?|	The keyboard mash will probably mess with the typing function|	1<br/>Play game a lot	|as described|	as expected|	not really|	It doesnt break the game, but it doesnt look good either. I'll see if I can add a keyboard input blocker on the last day|
+
 
 </details>
