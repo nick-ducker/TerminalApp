@@ -6,6 +6,7 @@ require 'tty-prompt'
 
 # This module is intended to house the game functions not related to game class instance variables
 module FunctionsModule
+
   # Colour array used for the game in normal colour settings
   @@colours = %i[
     green
@@ -56,7 +57,7 @@ module FunctionsModule
   end
 
   # types a passed string character by character using a passed sleep array in random colours
-  def main_typer(string, difficulty)
+  def round_typer(string, difficulty)
     string.chars.each do |x|
       print x.colorize(selector(@@colours))
       sleep(selector(difficulty[4]))
@@ -64,7 +65,7 @@ module FunctionsModule
   end
 
   # types a passed string character by character fast in green
-  def second_typer(string)
+  def fast_green_typer(string)
     string.chars.each do |x|
       print x.colorize(@@colours[0])
       sleep(0.003)
@@ -73,7 +74,7 @@ module FunctionsModule
   end
 
   # types a passed string character by character at a medium pace in multicolor
-  def third_typer(string)
+  def medium_rainbow_typer(string)
     string.chars.each do |x|
       print x.colorize(selector(@@colours))
       sleep(0.02)
@@ -106,14 +107,14 @@ module FunctionsModule
 
   # yes no method that takes a simply prompt that is typed out before the question is asked.
   def yes_no(prompt)
-    third_typer(prompt)
+    medium_rainbow_typer(prompt)
     br
     TTY::Prompt.new.yes?('?')
   end
 
   # enter or q method used for title screen. Blocks all input except enter or q
   def enter_q
-    third_typer 'Press Enter to continue or q to quit'
+    medium_rainbow_typer 'Press Enter to continue or q to quit'
     br
     running = true
     while running
@@ -133,7 +134,7 @@ module FunctionsModule
 
   # difficulty selection menu to set desired difficulty
   def difficulty_menu
-    third_typer 'Select your desired difficulty'
+    medium_rainbow_typer 'Select your desired difficulty'
     br
     TTY::Prompt.new.select('?') do |menu|
       menu.choice 'Easy', :d1
@@ -149,7 +150,7 @@ module FunctionsModule
   end
 
   # flashes a string using a difficulty hash to dictate amount of flashes, and time between flashes. Also places cursor randomly and displays score and difficulty
-  def flash(string, difficulty, height, width, score)
+  def string_flasher(string, difficulty, height, width, score)
     difficulty[5].times do
       clear
       puts score_display(score, difficulty)

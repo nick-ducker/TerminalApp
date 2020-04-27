@@ -121,7 +121,7 @@ module DifficultyModule
   # [1] seconds given to type answer
   # [2] score penalty if timeout or wrong answer
   # [3] amount of phrases that will be displayed
-  # [4] array of random sleep ranges to be chosen from each time a character is typed with the main_typer method
+  # [4] array of random sleep ranges to be chosen from each time a character is typed with the round_typer method
   # [5] number of times the phrases/prompt are flashed
   # [6] time between flashes
   # [7] string name of the difficulty

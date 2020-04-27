@@ -92,8 +92,8 @@ class Game
   def display_to_user(string)
     puts score_display(@score, @difficulty)
     random_cursor(@height, @width)
-    main_typer(string, @difficulty)
-    flash(string, @difficulty, @height, @width, @score)
+    round_typer(string, @difficulty)
+    string_flasher(string, @difficulty, @height, @width, @score)
   end
 
   # Method takes the filtered command line arguments and changes instance variables accordingly

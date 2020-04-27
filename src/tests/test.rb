@@ -144,10 +144,10 @@ class ManualTests
     include DifficultyModule
     include AsciiArt
     def initialize
-        main_typer("I am being typed",[0.5,0.05])
-        second_typer("I am being typed quickly")
+        round_typer("I am being typed",[0.5,0.05])
+        fast_green_typer("I am being typed quickly")
 
-        third_typer("Oh no, don't delete me..")
+        medium_rainbow_typer("Oh no, don't delete me..")
 
         string_deleter("Oh no, don't delete me..")
 
@@ -160,7 +160,7 @@ class ManualTests
         random_cursor(TTY::Screen.height, TTY::Screen.width)
 
         difficulty = difficulty_selector(:d1)
-        flash("I am being flashed",difficulty,TTY::Screen.height, TTY::Screen.width)
+        string_flasher("I am being flashed",difficulty,TTY::Screen.height, TTY::Screen.width)
 
         warning()
 
