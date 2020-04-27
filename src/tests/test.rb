@@ -9,11 +9,14 @@ require_relative '../modules/data'
 require_relative '../modules/functions'
 require_relative '../modules/ascii'
 
+#Terminal Class Tests
 class TerminalTest < Test::Unit::TestCase
   def test_command_line_argument
+    #tests command line method to raise an error if input isn't recognized
     exception = assert_raise('StandardError') { Terminal.new(['-abcdefg']) }
     assert_equal('Argument not recognized', exception.message)
 
+    #tests command line method to accept a range of valid arguments
     terminal = Terminal.new(['-nc'])
     assert_equal(['-nc'], terminal.argv, 'Terminal raised an exception when passed a valid argument')
 
@@ -26,16 +29,19 @@ class TerminalTest < Test::Unit::TestCase
     terminal = Terminal.new(['-d4', '-nc'])
     assert_equal(['-d4', '-nc'], terminal.argv, 'Terminal raised an exception when passed more than one valid argument')
 
+    #tests command line method to raise an error if too many valid arguments are provided
     exception = assert_raise('StandardError') { Terminal.new(['-d4', '-nc', '--help']) }
     assert_equal('Too many arguments provided', exception.message)
   end
 
+  #tests the rescue statment for the main game instance
   def test_rescue_statement
     terminal = Terminal.new(['-crash'])
     assert_equal(false, terminal.start)
   end
 end
 
+#Tests the phrase and prompt selection methods
 class PhrasePromptTest < Test::Unit::TestCase
   include DataModule
 
@@ -59,14 +65,17 @@ class PhrasePromptTest < Test::Unit::TestCase
   end
 end
 
+#Tests a range of methods within the functions module
 class FunctionsTest < Test::Unit::TestCase
   include FunctionsModule
   include DifficultyModule
 
+  #tests that the colour array is readable outside the functions module
   def test_colour_readable
     assert_equal(Array, colours.class, 'Colour Array of Functions module is not readable outside the module')
   end
 
+  #tests that the method will change the array to a single element array
   def test_colour_changer
     colour_changer(:white)
     assert_equal([:white], colours, 'Colour changer method does not change module variable to passed argument')
@@ -75,6 +84,7 @@ class FunctionsTest < Test::Unit::TestCase
     assert_equal([:green], colours, 'Colour changer method does not change module variable to passed argument')
   end
 
+  #tests that the score will display correctly
   def test_score_display
     difficulty = DIFFICULTY[:d1]
     assert_equal("\e[0;32;49mCurrent Score: 10000  |  Difficulty: EASY\e[0m", score_display(10_000, difficulty).force_encoding('UTF-8'), 'Score display method does not display correctly')
@@ -83,6 +93,7 @@ class FunctionsTest < Test::Unit::TestCase
     assert_equal("\e[0;32;49mCurrent Score: 999  |  Difficulty: MEDIUM\e[0m", score_display(999, difficulty).force_encoding('UTF-8'), 'Score display method does not display correctly')
   end
 
+  #tests random selector method
   def test_select_method
     array = selector([1, 2, 3, 4, 5])
     assert_equal(Integer, array.class, 'Select method does not return a single element')
@@ -91,6 +102,7 @@ class FunctionsTest < Test::Unit::TestCase
     assert_equal(Integer, array.class, 'Select method does not return a single element')
   end
 
+  #tests the deleter method
   def test_delete_method
     array = deleter(1, [1, 2, 3, 4, 5])
     assert_equal(4, array.size, 'Delete method does not delete the passed argument from the passed array')
@@ -99,6 +111,7 @@ class FunctionsTest < Test::Unit::TestCase
     assert_equal(6, array.size, 'Delete method does not delete the passed argument from the passed array')
   end
 
+  #tests the checking method
   def test_checking_method
     assert_equal('true', checker('input', 'checking the [INPUT]'), 'Checker method does not return true on matching input')
     assert_equal('false', checker('ipnut', 'checking the [INPUT]'), 'Checker method does not return false on non-matching input')
@@ -106,6 +119,7 @@ class FunctionsTest < Test::Unit::TestCase
   end
 end
 
+#tests that all attributes of the game class are readable
 class GameTester < Test::Unit::TestCase
   def test_game_attributes_readable
     game = Game.new
@@ -123,45 +137,46 @@ class GameTester < Test::Unit::TestCase
   end
 end
 
-# class ManualTests
+#Everything below here is used for manual testing. You can find documentation in the manual testing table on GitHub
+class ManualTests
 
-#     include FunctionsModule
-#     include DifficultyModule
-#     include AsciiArt
-#     def initialize
-#         #main_typer("I am being typed",[0.5,0.05])
-#         #second_typer("I am being typed quickly")
+    include FunctionsModule
+    include DifficultyModule
+    include AsciiArt
+    def initialize
+        main_typer("I am being typed",[0.5,0.05])
+        second_typer("I am being typed quickly")
 
-#         #third_typer("Oh no, don't delete me..")
+        third_typer("Oh no, don't delete me..")
 
-#         #string_deleter("Oh no, don't delete me..")
+        string_deleter("Oh no, don't delete me..")
 
-#         #yes_no("Do you want to play again?")
+        yes_no("Do you want to play again?")
 
-#         #enter_q()
+        enter_q()
 
-#         #difficulty_menu()
+        difficulty_menu()
 
-#         #random_cursor(TTY::Screen.height, TTY::Screen.width)
+        random_cursor(TTY::Screen.height, TTY::Screen.width)
 
-#         # difficulty = difficulty_selector(:d1)
-#         # flash("I am being flashed",difficulty,TTY::Screen.height, TTY::Screen.width)
+        difficulty = difficulty_selector(:d1)
+        flash("I am being flashed",difficulty,TTY::Screen.height, TTY::Screen.width)
 
-#         #warning()
+        warning()
 
-#         #title()
+        title()
 
-#         #game_over(0)
+        game_over(0)
 
-#         #game_over(10)
+        game_over(10)
 
-#         #rules()
+        rules()
 
-#         #countdown()
+        countdown()
 
-#     end
+    end
 
-# end
+end
 
 # #ManualTests.new
 
