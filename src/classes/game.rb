@@ -34,60 +34,67 @@ class Game
     print @cursor.hide
   end
 
-  # After the game is started, this method will start the main game loop
+  # This method runs through associated methods to play game from start to finish
   def game_start
     clear
     warning
-
     clear
     if @intro
-      if title
-        clear
-        yes_no('Do you want to read the rules and see a live demo?') ? rules : nil
-        clear
-        difficulty_key = difficulty_menu
-        @difficulty = DIFFICULTY[difficulty_key]
-        @promptarr = prompt_select(difficulty_key)
-      else
-        @running = false
-        exit
-      end
+      introduction()
     end
-
     clear
     countdown
-
     until @promptarr == []
-
-      phrases = @phrasearr.dup
-      @difficulty[3].times do
-        clear
-        phrase = selector(phrases)
-        puts score_display(@score, @difficulty)
-        random_cursor(@height, @width)
-        main_typer(phrase, @difficulty)
-        flash(phrase, @difficulty, @height, @width, @score)
-        phrases = deleter(phrase, phrases)
-      end
-
-      clear
-      prompt = selector(@promptarr)
-      puts score_display(@score, @difficulty)
-      random_cursor(@height, @width)
-      main_typer(prompt, @difficulty)
-      flash(prompt, @difficulty, @height, @width, @score)
-      input = timed_input
-      print @cursor.hide
-      scorer(checker(input, prompt))
-      deleter(prompt, @promptarr)
-
-      check_score
+      game_round()      
     end
-
     @running = game_over(@score)
   end
 
   private
+
+  #displays title, rules and difficulty selection
+  def introduction
+    if title
+      clear
+      yes_no('Do you want to read the rules and see a live demo?') ? rules : nil
+      clear
+      difficulty_key = difficulty_menu
+      @difficulty = DIFFICULTY[difficulty_key]
+      @promptarr = prompt_select(difficulty_key)
+    else
+      @running = false
+      exit
+    end
+  end
+
+  #Runs a single game round, deleting selected prompt after game.
+  def game_round
+    phrases = @phrasearr.dup
+      @difficulty[3].times do
+        clear
+        phrase = selector(phrases)
+        display_to_user(phrase)
+        phrases = deleter(phrase, phrases)
+      end
+
+    clear
+    prompt = selector(@promptarr)
+    display_to_user(prompt)
+    input = timed_input
+    print @cursor.hide
+    scorer(checker(input, prompt))
+    deleter(prompt, @promptarr)
+
+    check_score
+  end
+
+  #Wraps display methods into a single method to slim code
+  def display_to_user(string)
+    puts score_display(@score, @difficulty)
+    random_cursor(@height, @width)
+    main_typer(string, @difficulty)
+    flash(string, @difficulty, @height, @width, @score)
+  end
 
   # Method takes the filtered command line arguments and changes instance variables accordingly
   def command_line_arguments(array)
